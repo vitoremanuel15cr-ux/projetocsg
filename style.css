@@ -854,13 +854,23 @@ a.contact-value:hover {
 @media (max-width: 480px) {
   .container { padding: 0 16px; }
   .header-inner { min-height: 68px; }
+  .brand { min-width: 0; }
+  .brand-name { max-width: 160px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
   .hero { padding: 64px 0 44px; }
+  .hero-inner { gap: 28px; }
+  .hero-title { font-size: clamp(2.05rem, 5.6vw + 0.5rem, 2.8rem); }
+  .hero-subtitle { font-size: 1rem; }
   .hero-actions { gap: 12px; }
   .hero-actions .btn { width: 100%; justify-content: center; }
   .section { padding: 64px 0; }
   .card, .profile-card, .student-card { padding: 22px; }
   .timeline-item { padding-left: 54px; }
   .modal-media { height: 52vh; min-height: 220px; }
+  .hero-visual { min-height: auto; }
+  .dashboard-panel { max-width: 100%; }
+  .dash-card { padding: 16px; gap: 12px; border-radius: 16px; }
+  .dash-info h4 { font-size: 1rem; }
+  .dash-stats { font-size: 1rem; }
 }
 
 @media (min-width: 768px) {
