@@ -205,6 +205,15 @@ button {
   gap: 10px;
 }
 
+.btn-sm {
+  padding: 10px 14px;
+  font-size: 0.95rem;
+}
+
+.header-cta {
+  display: none;
+}
+
 /* Nav */
 .nav-toggle {
   width: 44px;
@@ -346,17 +355,11 @@ body.nav-open .nav-list {
 }
 
 .accent {
-  background: linear-gradient(135deg, var(--green), var(--teal));
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  color: var(--green);
 }
 
 .accent2 {
-  background: linear-gradient(135deg, var(--blue), #818cf8);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  color: var(--blue);
 }
 
 .hero-subtitle {
@@ -364,6 +367,25 @@ body.nav-open .nav-list {
   color: var(--muted);
   margin: 0 0 30px;
   max-width: 55ch;
+}
+
+.hero-highlights {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 26px;
+  display: grid;
+  gap: 10px;
+  color: var(--muted);
+  max-width: 60ch;
+}
+.hero-highlights li {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+.hero-highlights i {
+  margin-top: 2px;
+  color: var(--teal);
 }
 
 .hero-actions {
@@ -524,6 +546,53 @@ body.nav-open .nav-list {
 .card-title {
   font-size: 1.4rem;
   margin: 0 0 16px;
+}
+
+.card-subtitle {
+  margin: -6px 0 18px;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.feature-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 18px;
+  display: grid;
+  gap: 10px;
+}
+.feature-list li {
+  display: grid;
+  grid-template-columns: 94px 1fr;
+  gap: 10px;
+  align-items: baseline;
+}
+.feature-key {
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.feature-val {
+  color: var(--text);
+  opacity: 0.92;
+  font-size: 0.95rem;
+}
+
+.card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,0.03);
+  color: var(--muted);
+  font-size: 0.85rem;
 }
 
 .card-text {
@@ -864,6 +933,7 @@ a.contact-value:hover {
   .hero-actions .btn { width: 100%; justify-content: center; }
   .section { padding: 64px 0; }
   .card, .profile-card, .student-card { padding: 22px; }
+  .feature-list li { grid-template-columns: 82px 1fr; }
   .timeline-item { padding-left: 54px; }
   .modal-media { height: 52vh; min-height: 220px; }
   .hero-visual { min-height: auto; }
@@ -887,6 +957,7 @@ a.contact-value:hover {
 @media (min-width: 1024px) {
   .nav-toggle { display: none; }
   .nav-list { display: flex; align-items: center; }
+  .header-cta { display: inline-flex; }
   body.nav-open .nav-list {
     position: static;
     padding: 0;
@@ -904,6 +975,8 @@ a.contact-value:hover {
   html { scroll-behavior: auto; }
   .cell { animation: none; }
   .reveal { transition: none; opacity: 1; transform: none; }
+  .progress::after { animation: none; opacity: 0; }
+  .bio-particle { animation: none; }
 }
 /* ==========================================================================
    NOVO VISUAL HERO (Dashboard) & BIOLOGIA
@@ -914,7 +987,6 @@ a.contact-value:hover {
   display: flex;
   justify-content: center;
   align-items: center;
-  perspective: 1200px;
   min-height: 400px;
 }
 
@@ -925,19 +997,11 @@ a.contact-value:hover {
   display: flex;
   flex-direction: column;
   gap: 16px;
-  transform-style: preserve-3d;
-  transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
   z-index: 2;
 }
 
 @media (min-width: 1024px) {
   .hero-inner { grid-template-columns: 1.1fr 0.9fr; gap: 60px; }
-  .dashboard-panel {
-    transform: rotateX(8deg) rotateY(-12deg);
-  }
-  .hero-visual:hover .dashboard-panel {
-    transform: rotateX(2deg) rotateY(-4deg) scale(1.02);
-  }
 }
 
 .dash-bg-glow {
@@ -947,9 +1011,32 @@ a.contact-value:hover {
   width: 120%;
   height: 120%;
   background: radial-gradient(circle, rgba(16,185,129,0.15) 0%, rgba(14,165,233,0.1) 40%, transparent 70%);
-  transform: translate(-50%, -50%) translateZ(-50px);
+  transform: translate(-50%, -50%);
   filter: blur(40px);
   pointer-events: none;
+}
+
+.dash-caption {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 0 8px 6px;
+}
+.dash-caption-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.04);
+  color: var(--text);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+.dash-caption-note {
+  color: var(--muted);
+  font-size: 0.8rem;
 }
 
 .dash-card {
@@ -962,14 +1049,14 @@ a.contact-value:hover {
   gap: 16px;
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  box-shadow: 0 20px 40px -10px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.05);
-  transform: translateZ(0);
-  transition: transform 0.3s ease, border-color 0.3s ease;
+  box-shadow: var(--shadow-md);
+  transition: border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
 }
 
 .dash-card:hover {
-  transform: translateZ(20px);
-  border-color: rgba(255, 255, 255, 0.2);
+  background: var(--surface-2);
+  border-color: rgba(255, 255, 255, 0.18);
+  box-shadow: var(--shadow-lg);
 }
 
 .dash-icon {
@@ -983,6 +1070,7 @@ a.contact-value:hover {
 }
 .dash-card-1 .dash-icon { color: var(--green); background: rgba(16,185,129,0.1); }
 .dash-card-2 .dash-icon { color: var(--blue); background: rgba(14,165,233,0.1); }
+.dash-card-3 .dash-icon { color: var(--teal); background: rgba(20,184,166,0.1); }
 
 .dash-info {
   flex: 1;
@@ -1017,17 +1105,14 @@ a.contact-value:hover {
 .progress::after {
   content: '';
   position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
-  animation: shimmer 2s infinite;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.22), transparent);
+  transform: translateX(-120%);
+  animation: shimmer 2.8s ease-in-out infinite;
+  opacity: 0.7;
 }
-.p-green { background: var(--green); box-shadow: 0 0 10px var(--green); }
-.p-blue { background: var(--blue); box-shadow: 0 0 10px var(--blue); }
-
-@keyframes shimmer {
-  0% { transform: translateX(-100%); }
-  100% { transform: translateX(100%); }
-}
+.p-green { background: var(--green); box-shadow: 0 0 12px rgba(16,185,129,0.25); }
+.p-blue { background: var(--blue); box-shadow: 0 0 12px rgba(14,165,233,0.22); }
 
 .dash-stats {
   font-size: 1.2rem;
@@ -1039,33 +1124,7 @@ a.contact-value:hover {
 .dash-card-2 .dash-stats { color: var(--blue); }
 
 .dash-card-3 {
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 12px;
-  padding: 16px 20px;
-}
-
-.dna-animation {
-  display: flex;
-  gap: 6px;
-  height: 30px;
-  align-items: center;
-}
-.dna-animation .strand {
-  width: 4px;
-  background: var(--teal);
-  border-radius: 2px;
-  animation: dna-pulse 1s ease-in-out infinite alternate;
-}
-.dna-animation .strand:nth-child(1) { height: 100%; animation-delay: 0s; }
-.dna-animation .strand:nth-child(2) { height: 60%; animation-delay: 0.2s; background: var(--blue); }
-.dna-animation .strand:nth-child(3) { height: 80%; animation-delay: 0.4s; background: var(--green); }
-.dna-animation .strand:nth-child(4) { height: 40%; animation-delay: 0.6s; background: var(--blue); }
-.dna-animation .strand:nth-child(5) { height: 90%; animation-delay: 0.8s; background: var(--teal); }
-
-@keyframes dna-pulse {
-  0% { transform: scaleY(0.5); opacity: 0.5; }
-  100% { transform: scaleY(1); opacity: 1; box-shadow: 0 0 10px currentColor; }
+  padding: 18px 20px;
 }
 
 .dash-note {
@@ -1077,27 +1136,30 @@ a.contact-value:hover {
   text-transform: uppercase;
 }
 
-/* Biology Particles */
-.bio-particle {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(8px);
-  opacity: 0.5;
-  animation: float-bio 10s infinite linear;
-  z-index: 1;
+@keyframes shimmer {
+  0% { transform: translateX(-120%); }
+  60% { transform: translateX(120%); }
+  100% { transform: translateX(120%); }
 }
 
-.p1 { width: 80px; height: 80px; background: var(--green); top: 10%; left: -10%; animation-duration: 12s; }
-.p2 { width: 120px; height: 120px; background: var(--blue); bottom: 0; right: -5%; animation-duration: 15s; animation-direction: reverse; }
-.p3 { width: 60px; height: 60px; background: var(--teal); top: 40%; right: 10%; animation-duration: 9s; }
-.p4 { width: 40px; height: 40px; background: #818cf8; bottom: 20%; left: 10%; animation-duration: 11s; }
-.p5 { width: 90px; height: 90px; border: 2px solid var(--green); background: transparent; filter: blur(2px); top: -5%; right: 20%; animation-duration: 14s; }
+.bio-particle {
+  position: absolute;
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  pointer-events: none;
+  background: radial-gradient(circle at 30% 30%, rgba(16,185,129,0.18), rgba(14,165,233,0.10), transparent 70%);
+  filter: blur(2px);
+  opacity: 0.55;
+  animation: floatParticle 10s ease-in-out infinite;
+}
+.bio-particle.p1 { top: -10px; right: -20px; width: 120px; height: 120px; animation-duration: 12s; }
+.bio-particle.p2 { bottom: 10px; left: -30px; width: 160px; height: 160px; animation-duration: 14s; opacity: 0.45; }
+.bio-particle.p3 { top: 55%; right: -35px; width: 90px; height: 90px; animation-duration: 11s; opacity: 0.35; }
 
-@keyframes float-bio {
-  0% { transform: translate(0, 0) rotate(0deg); }
-  33% { transform: translate(30px, -40px) rotate(120deg); }
-  66% { transform: translate(-20px, 20px) rotate(240deg); }
-  100% { transform: translate(0, 0) rotate(360deg); }
+@keyframes floatParticle {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  50% { transform: translate3d(0, -16px, 0); }
 }
 
 /* ==========================================================================
@@ -1105,13 +1167,11 @@ a.contact-value:hover {
    ========================================================================== */
 
 .projects-grid {
-  perspective: 1000px;
 }
 .card-hover-3d {
-  transform-style: preserve-3d;
 }
 .card-hover-3d:hover {
-  transform: translateY(-10px) rotateX(2deg) rotateY(2deg);
+  transform: translateY(-6px);
 }
 .card-glow {
   position: absolute;
@@ -1152,7 +1212,7 @@ a.contact-value:hover {
   bottom: 10px;
   width: 2px;
   background: linear-gradient(180deg, var(--green), var(--blue));
-  opacity: 0.3;
+  opacity: 0.18;
 }
 
 .timeline-item {
@@ -1172,8 +1232,8 @@ a.contact-value:hover {
   height: 16px;
   border-radius: 50%;
   background: var(--bg);
-  border: 3px solid var(--green);
-  box-shadow: 0 0 10px rgba(16, 185, 129, 0.5);
+  border: 2px solid var(--green);
+  box-shadow: 0 0 0 rgba(16, 185, 129, 0);
   z-index: 1;
 }
 
@@ -1186,7 +1246,7 @@ a.contact-value:hover {
 }
 .timeline-content:hover {
   background: var(--surface-2);
-  transform: translateX(5px);
+  transform: translateX(2px);
   border-color: rgba(255, 255, 255, 0.15);
   box-shadow: var(--shadow-md);
 }

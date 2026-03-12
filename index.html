@@ -3,454 +3,2137 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="color-scheme" content="dark light" />
-    <meta name="description" content="Site de apresentação de pesquisas em Biotecnologia e Sustentabilidade." />
-
-    <title>BioInovação | Pesquisa em Sustentabilidade</title>
-
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@300;400;500;600;700;800&display=swap"
-      rel="stylesheet"
+    <meta
+      name="description"
+      content="Projetos de biotecnologia para feira de ciências: biofertilizante natural e bactéria que degrada PET."
     />
+    <title>Projetos de Biotecnologia para o Futuro</title>
 
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
+    <style>
+      :root {
+        --primary: #2e7d32;
+        --secondary: #1565c0;
+        --bg: #ffffff;
+        --surface: #f7faf8;
+        --surface-2: #eef6ff;
+        --text: #0f172a;
+        --muted: #475569;
+        --border: rgba(15, 23, 42, 0.12);
+        --shadow: 0 18px 40px rgba(15, 23, 42, 0.08);
+        --shadow-sm: 0 10px 22px rgba(15, 23, 42, 0.08);
+        --radius-sm: 14px;
+        --radius-md: 18px;
+        --radius-lg: 22px;
+        --container: 1120px;
+      }
 
-    <link rel="stylesheet" href="./style.css" />
+      html[data-theme="dark"] {
+        --bg: #08110c;
+        --surface: rgba(255, 255, 255, 0.06);
+        --surface-2: rgba(21, 101, 192, 0.12);
+        --text: rgba(248, 250, 252, 0.95);
+        --muted: rgba(203, 213, 225, 0.82);
+        --border: rgba(148, 163, 184, 0.18);
+        --shadow: 0 22px 46px rgba(0, 0, 0, 0.45);
+        --shadow-sm: 0 14px 26px rgba(0, 0, 0, 0.38);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Liberation Sans",
+          sans-serif;
+        color: var(--text);
+        background: var(--bg);
+        line-height: 1.55;
+      }
+
+      html[data-theme="dark"] body {
+        background: radial-gradient(1200px 600px at 20% 10%, rgba(46, 125, 50, 0.22), transparent 60%),
+          radial-gradient(1100px 560px at 86% 0%, rgba(21, 101, 192, 0.22), transparent 60%),
+          var(--bg);
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+      }
+
+      .container {
+        max-width: var(--container);
+        padding: 0 20px;
+        margin: 0 auto;
+      }
+
+      .skip-link {
+        position: absolute;
+        top: 12px;
+        left: 12px;
+        padding: 10px 12px;
+        border-radius: 12px;
+        background: var(--text);
+        color: white;
+        transform: translateY(-160%);
+        transition: transform 200ms ease;
+        z-index: 999;
+      }
+
+      .skip-link:focus {
+        transform: translateY(0);
+        outline: none;
+      }
+
+      .site-header {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        background: rgba(255, 255, 255, 0.82);
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
+        border-bottom: 1px solid var(--border);
+      }
+
+      html[data-theme="dark"] .site-header {
+        background: rgba(8, 17, 12, 0.78);
+      }
+
+      .scroll-progress {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: -1px;
+        height: 3px;
+        background: rgba(15, 23, 42, 0.06);
+        pointer-events: none;
+      }
+
+      html[data-theme="dark"] .scroll-progress {
+        background: rgba(255, 255, 255, 0.08);
+      }
+
+      .scroll-progress > div {
+        height: 100%;
+        width: 0%;
+        background: linear-gradient(90deg, var(--primary), var(--secondary));
+        border-radius: 999px;
+        box-shadow: 0 10px 18px rgba(21, 101, 192, 0.18);
+      }
+
+      .header-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 14px;
+        min-height: 76px;
+      }
+
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        min-width: 0;
+      }
+
+      .brand-mark {
+        width: 44px;
+        height: 44px;
+        border-radius: 14px;
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+        display: grid;
+        place-items: center;
+        color: white;
+        box-shadow: 0 14px 26px rgba(21, 101, 192, 0.18);
+        flex: 0 0 auto;
+      }
+
+      .brand-name {
+        font-weight: 800;
+        letter-spacing: -0.02em;
+        font-size: 1.02rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .site-nav {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+      }
+
+      .header-controls {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .control-btn {
+        width: 44px;
+        height: 44px;
+        border-radius: 14px;
+        border: 1px solid var(--border);
+        background: rgba(255, 255, 255, 0.9);
+        display: grid;
+        place-items: center;
+        cursor: pointer;
+        transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease;
+      }
+
+      html[data-theme="dark"] .control-btn {
+        background: rgba(255, 255, 255, 0.06);
+      }
+
+      .control-btn:hover {
+        box-shadow: var(--shadow-sm);
+        transform: translateY(-1px);
+      }
+
+      .control-btn:active {
+        transform: scale(0.98);
+      }
+
+      .nav-toggle {
+        width: 44px;
+        height: 44px;
+        border-radius: 14px;
+        border: 1px solid var(--border);
+        background: var(--surface);
+        display: grid;
+        place-items: center;
+        cursor: pointer;
+        transition: transform 160ms ease, box-shadow 160ms ease;
+      }
+
+      html[data-theme="dark"] .nav-toggle {
+        background: rgba(255, 255, 255, 0.06);
+      }
+
+      .nav-toggle:active {
+        transform: scale(0.98);
+      }
+
+      .nav-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: none;
+        gap: 6px;
+      }
+
+      .nav-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 12px;
+        border-radius: 14px;
+        color: var(--muted);
+        font-weight: 700;
+        font-size: 0.95rem;
+        transition: background 160ms ease, color 160ms ease;
+      }
+
+      .nav-link:hover {
+        background: rgba(46, 125, 50, 0.08);
+        color: var(--text);
+      }
+
+      .nav-link[aria-current="page"] {
+        color: var(--text);
+        background: rgba(21, 101, 192, 0.1);
+      }
+
+      body.nav-open .nav-list {
+        display: grid;
+        position: absolute;
+        top: calc(100% + 12px);
+        right: 20px;
+        width: min(92vw, 340px);
+        padding: 14px;
+        border-radius: 18px;
+        border: 1px solid var(--border);
+        background: rgba(255, 255, 255, 0.92);
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
+        box-shadow: var(--shadow-sm);
+      }
+
+      html[data-theme="dark"] body.nav-open .nav-list {
+        background: rgba(8, 17, 12, 0.84);
+      }
+
+      .hero {
+        position: relative;
+        padding: 86px 0 54px;
+        overflow: hidden;
+        --px: 0px;
+        --py: 0px;
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        inset: -240px -120px auto -120px;
+        height: 520px;
+        background: radial-gradient(closest-side, rgba(46, 125, 50, 0.16), transparent 70%),
+          radial-gradient(closest-side, rgba(21, 101, 192, 0.16), transparent 70%);
+        filter: blur(14px);
+        z-index: 0;
+        transform: translate(calc(var(--px) * -1), calc(var(--py) * -1));
+        transition: transform 220ms ease;
+      }
+
+      .hero::after {
+        content: "";
+        position: absolute;
+        inset: auto -140px -260px -140px;
+        height: 520px;
+        background: radial-gradient(closest-side, rgba(21, 101, 192, 0.14), transparent 70%),
+          radial-gradient(closest-side, rgba(46, 125, 50, 0.12), transparent 70%);
+        filter: blur(12px);
+        z-index: 0;
+        transform: translate(var(--px), var(--py));
+        transition: transform 220ms ease;
+      }
+
+      .hero-inner {
+        position: relative;
+        z-index: 1;
+        display: grid;
+        gap: 28px;
+        align-items: center;
+      }
+
+      .kicker {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 8px 12px;
+        border-radius: 999px;
+        border: 1px solid rgba(21, 101, 192, 0.18);
+        background: rgba(21, 101, 192, 0.08);
+        color: #0b3d8a;
+        font-weight: 800;
+        letter-spacing: 0.02em;
+        font-size: 0.9rem;
+        width: fit-content;
+      }
+
+      html[data-theme="dark"] .kicker {
+        color: rgba(226, 232, 240, 0.92);
+        border-color: rgba(148, 163, 184, 0.22);
+        background: rgba(21, 101, 192, 0.14);
+      }
+
+      .hero-title {
+        margin: 12px 0 10px;
+        font-size: clamp(2.05rem, 3.6vw + 1rem, 3.4rem);
+        line-height: 1.06;
+        letter-spacing: -0.03em;
+      }
+
+      .hero-title .accent {
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+
+      .hero-subtitle {
+        margin: 0 0 22px;
+        color: var(--muted);
+        max-width: 64ch;
+        font-size: 1.06rem;
+      }
+
+      .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-bottom: 22px;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        border-radius: 16px;
+        padding: 12px 16px;
+        font-weight: 800;
+        cursor: pointer;
+        transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease, border-color 160ms ease;
+        border: 1px solid transparent;
+        user-select: none;
+      }
+
+      .btn-primary {
+        color: white;
+        background: var(--primary);
+        box-shadow: 0 16px 30px rgba(46, 125, 50, 0.22);
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-2px);
+        background: #256b2a;
+      }
+
+      .btn-ghost {
+        background: var(--surface);
+        border-color: var(--border);
+        color: var(--text);
+      }
+
+      .btn-ghost:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-sm);
+      }
+
+      .hero-highlights {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: grid;
+        gap: 10px;
+        max-width: 70ch;
+      }
+
+      .hero-highlights li {
+        display: flex;
+        gap: 10px;
+        color: var(--muted);
+        align-items: flex-start;
+      }
+
+      .hero-panel {
+        border-radius: 22px;
+        border: 1px solid var(--border);
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(247, 250, 248, 0.92));
+        box-shadow: var(--shadow);
+        padding: 18px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      html[data-theme="dark"] .hero-panel {
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.04));
+      }
+
+      .hero-panel::before {
+        content: "";
+        position: absolute;
+        inset: -100px -120px auto -120px;
+        height: 240px;
+        background: radial-gradient(closest-side, rgba(46, 125, 50, 0.18), transparent 70%),
+          radial-gradient(closest-side, rgba(21, 101, 192, 0.16), transparent 70%);
+        filter: blur(10px);
+      }
+
+      .panel-header {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        margin-bottom: 14px;
+      }
+
+      .panel-title {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: 900;
+        letter-spacing: -0.02em;
+      }
+
+      .panel-badge {
+        font-size: 0.85rem;
+        font-weight: 800;
+        color: #0b3d8a;
+        background: rgba(21, 101, 192, 0.1);
+        border: 1px solid rgba(21, 101, 192, 0.18);
+        padding: 6px 10px;
+        border-radius: 999px;
+      }
+
+      html[data-theme="dark"] .panel-badge {
+        color: rgba(226, 232, 240, 0.92);
+        background: rgba(21, 101, 192, 0.16);
+        border-color: rgba(148, 163, 184, 0.22);
+      }
+
+      .panel-grid {
+        position: relative;
+        display: grid;
+        gap: 12px;
+      }
+
+      .panel-metric {
+        display: grid;
+        grid-template-columns: 44px 1fr;
+        gap: 12px;
+        align-items: center;
+        border-radius: 18px;
+        border: 1px solid rgba(15, 23, 42, 0.1);
+        background: rgba(255, 255, 255, 0.8);
+        padding: 14px;
+      }
+
+      html[data-theme="dark"] .panel-metric {
+        border-color: rgba(148, 163, 184, 0.18);
+        background: rgba(255, 255, 255, 0.04);
+      }
+
+      .metric-icon {
+        width: 44px;
+        height: 44px;
+        border-radius: 16px;
+        display: grid;
+        place-items: center;
+        color: white;
+      }
+
+      .metric-icon.green {
+        background: rgba(46, 125, 50, 0.9);
+      }
+
+      .metric-icon.blue {
+        background: rgba(21, 101, 192, 0.9);
+      }
+
+      .metric-icon.teal {
+        background: linear-gradient(135deg, rgba(46, 125, 50, 0.9), rgba(21, 101, 192, 0.9));
+      }
+
+      .metric-kpi {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 10px;
+      }
+
+      .metric-kpi strong {
+        font-size: 1.2rem;
+        letter-spacing: -0.02em;
+      }
+
+      .metric-kpi span {
+        color: var(--muted);
+        font-weight: 800;
+        font-size: 0.9rem;
+      }
+
+      .progress {
+        height: 8px;
+        border-radius: 999px;
+        background: rgba(15, 23, 42, 0.08);
+        overflow: hidden;
+        margin-top: 8px;
+      }
+
+      .progress > div {
+        height: 100%;
+        width: 0%;
+        border-radius: 999px;
+        background: linear-gradient(90deg, var(--primary), var(--secondary));
+        transition: width 900ms ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .progress > div::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+        transform: translateX(-120%);
+        animation: shimmer 2.6s ease-in-out infinite;
+        opacity: 0.75;
+      }
+
+      @keyframes shimmer {
+        0% {
+          transform: translateX(-120%);
+        }
+        60% {
+          transform: translateX(120%);
+        }
+        100% {
+          transform: translateX(120%);
+        }
+      }
+
+      .section {
+        padding: 76px 0;
+      }
+
+      .section.alt {
+        background: linear-gradient(180deg, var(--surface-2), var(--surface));
+        border-top: 1px solid rgba(21, 101, 192, 0.12);
+        border-bottom: 1px solid rgba(21, 101, 192, 0.12);
+      }
+
+      .section-header {
+        display: grid;
+        gap: 10px;
+        margin-bottom: 24px;
+        max-width: 74ch;
+      }
+
+      .section-title {
+        margin: 0;
+        font-size: clamp(1.6rem, 1.4vw + 1.2rem, 2.2rem);
+        letter-spacing: -0.03em;
+      }
+
+      .section-subtitle {
+        margin: 0;
+        color: var(--muted);
+        font-weight: 600;
+      }
+
+      .grid {
+        display: grid;
+        gap: 16px;
+      }
+
+      .grid-2 {
+        grid-template-columns: 1fr;
+      }
+
+      .grid-3 {
+        grid-template-columns: 1fr;
+      }
+
+      .card {
+        border-radius: 22px;
+        border: 1px solid var(--border);
+        background: var(--surface);
+        box-shadow: var(--shadow-sm);
+        padding: 18px;
+        position: relative;
+        overflow: hidden;
+        transition: transform 170ms ease, box-shadow 170ms ease;
+      }
+
+      html[data-theme="dark"] .card {
+        background: rgba(255, 255, 255, 0.05);
+      }
+
+      .card:hover {
+        transform: translateY(-3px);
+        box-shadow: var(--shadow);
+      }
+
+      .card-header {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 12px;
+        margin-bottom: 12px;
+      }
+
+      .card-kicker {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: 900;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        font-size: 0.8rem;
+        color: rgba(15, 23, 42, 0.72);
+      }
+
+      html[data-theme="dark"] .card-kicker {
+        color: rgba(203, 213, 225, 0.88);
+      }
+
+      .pill {
+        display: inline-flex;
+        padding: 7px 10px;
+        border-radius: 999px;
+        border: 1px solid rgba(46, 125, 50, 0.18);
+        background: rgba(46, 125, 50, 0.08);
+        color: #1f5a24;
+        font-weight: 900;
+        font-size: 0.86rem;
+        flex: 0 0 auto;
+      }
+
+      html[data-theme="dark"] .pill {
+        color: rgba(226, 232, 240, 0.92);
+        border-color: rgba(148, 163, 184, 0.22);
+        background: rgba(46, 125, 50, 0.14);
+      }
+
+      .pill-blue {
+        border-color: rgba(21, 101, 192, 0.18);
+        background: rgba(21, 101, 192, 0.08);
+        color: #0b3d8a;
+      }
+
+      html[data-theme="dark"] .pill-blue {
+        color: rgba(226, 232, 240, 0.92);
+        border-color: rgba(148, 163, 184, 0.22);
+        background: rgba(21, 101, 192, 0.18);
+      }
+
+      .card-title {
+        margin: 0;
+        font-size: 1.26rem;
+        letter-spacing: -0.02em;
+      }
+
+      .card-text {
+        margin: 10px 0 0;
+        color: var(--muted);
+        font-weight: 600;
+      }
+
+      .list {
+        margin: 14px 0 0;
+        padding: 0;
+        list-style: none;
+        display: grid;
+        gap: 10px;
+      }
+
+      .list li {
+        display: grid;
+        grid-template-columns: 22px 1fr;
+        gap: 10px;
+        align-items: start;
+        color: var(--muted);
+        font-weight: 600;
+      }
+
+      .list strong {
+        color: var(--text);
+      }
+
+      .callout {
+        border-radius: 22px;
+        border: 1px solid rgba(21, 101, 192, 0.16);
+        background: linear-gradient(135deg, rgba(21, 101, 192, 0.1), rgba(46, 125, 50, 0.06));
+        padding: 18px;
+      }
+
+      .callout h3 {
+        margin: 0 0 8px;
+        font-size: 1.1rem;
+        letter-spacing: -0.02em;
+      }
+
+      .callout p {
+        margin: 0;
+        color: var(--muted);
+        font-weight: 600;
+      }
+
+      .steps {
+        display: grid;
+        gap: 12px;
+      }
+
+      .step {
+        display: grid;
+        grid-template-columns: 44px 1fr;
+        gap: 12px;
+        align-items: start;
+        border-radius: 22px;
+        border: 1px solid var(--border);
+        background: var(--surface);
+        box-shadow: var(--shadow-sm);
+        padding: 16px;
+      }
+
+      html[data-theme="dark"] .step {
+        background: rgba(255, 255, 255, 0.05);
+      }
+
+      .step-icon {
+        width: 44px;
+        height: 44px;
+        border-radius: 16px;
+        display: grid;
+        place-items: center;
+        color: white;
+        background: linear-gradient(135deg, var(--secondary), var(--primary));
+      }
+
+      .step h3 {
+        margin: 2px 0 6px;
+        letter-spacing: -0.02em;
+        font-size: 1.08rem;
+      }
+
+      .step p {
+        margin: 0;
+        color: var(--muted);
+        font-weight: 600;
+      }
+
+      .participants-hint {
+        margin: 12px 0 0;
+        color: var(--muted);
+        font-weight: 600;
+        font-size: 0.95rem;
+      }
+
+      .fronts {
+        display: grid;
+        gap: 16px;
+      }
+
+      .front {
+        border-radius: 22px;
+        border: 1px solid var(--border);
+        background: var(--surface);
+        box-shadow: var(--shadow-sm);
+        padding: 18px;
+      }
+
+      html[data-theme="dark"] .front {
+        background: rgba(255, 255, 255, 0.05);
+      }
+
+      .front-top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        margin-bottom: 10px;
+      }
+
+      .front-name {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: 900;
+        letter-spacing: -0.02em;
+        font-size: 1.1rem;
+        margin: 0;
+      }
+
+      .tag {
+        border-radius: 999px;
+        border: 1px solid rgba(15, 23, 42, 0.1);
+        padding: 7px 10px;
+        background: rgba(15, 23, 42, 0.03);
+        color: rgba(15, 23, 42, 0.76);
+        font-weight: 900;
+        font-size: 0.85rem;
+      }
+
+      html[data-theme="dark"] .tag {
+        color: rgba(226, 232, 240, 0.9);
+        border-color: rgba(148, 163, 184, 0.2);
+        background: rgba(255, 255, 255, 0.06);
+      }
+
+      .front ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        display: grid;
+        gap: 10px;
+      }
+
+      .front li {
+        display: grid;
+        grid-template-columns: 22px 1fr;
+        gap: 10px;
+        color: var(--muted);
+        font-weight: 600;
+      }
+
+      .people-grid {
+        display: grid;
+        gap: 16px;
+        grid-template-columns: 1fr;
+      }
+
+      .person-card {
+        border-radius: 22px;
+        border: 1px solid var(--border);
+        background: var(--surface);
+        box-shadow: var(--shadow-sm);
+        padding: 16px;
+        display: grid;
+        grid-template-columns: 64px 1fr;
+        gap: 14px;
+        align-items: center;
+        cursor: pointer;
+        transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease;
+      }
+
+      html[data-theme="dark"] .person-card {
+        background: rgba(255, 255, 255, 0.05);
+      }
+
+      .person-card:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow);
+      }
+
+      .person-avatar {
+        width: 64px;
+        height: 64px;
+        border-radius: 18px;
+        border: 1px solid var(--border);
+        overflow: hidden;
+        background: linear-gradient(135deg, rgba(46, 125, 50, 0.18), rgba(21, 101, 192, 0.18));
+        display: grid;
+        place-items: center;
+      }
+
+      .person-avatar img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .person-main {
+        min-width: 0;
+      }
+
+      .person-name {
+        margin: 0;
+        font-weight: 900;
+        letter-spacing: -0.02em;
+        font-size: 1.05rem;
+      }
+
+      .person-meta {
+        margin: 3px 0 0;
+        color: var(--muted);
+        font-weight: 700;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        align-items: center;
+        font-size: 0.92rem;
+      }
+
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 6px 10px;
+        border-radius: 999px;
+        border: 1px solid var(--border);
+        background: rgba(15, 23, 42, 0.03);
+        color: rgba(15, 23, 42, 0.78);
+        font-weight: 900;
+        font-size: 0.82rem;
+      }
+
+      html[data-theme="dark"] .badge {
+        background: rgba(255, 255, 255, 0.06);
+        color: rgba(226, 232, 240, 0.88);
+      }
+
+      .person-actions {
+        margin-top: 10px;
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+
+      .icon-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 12px;
+        border-radius: 14px;
+        border: 1px solid var(--border);
+        background: rgba(255, 255, 255, 0.9);
+        color: var(--text);
+        font-weight: 900;
+        font-size: 0.92rem;
+        transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease;
+      }
+
+      html[data-theme="dark"] .icon-link {
+        background: rgba(255, 255, 255, 0.06);
+      }
+
+      .icon-link:hover {
+        transform: translateY(-1px);
+        box-shadow: var(--shadow-sm);
+      }
+
+      .icon-link.primary {
+        background: var(--primary);
+        border-color: rgba(46, 125, 50, 0.35);
+        color: white;
+        box-shadow: 0 14px 26px rgba(46, 125, 50, 0.22);
+      }
+
+      .icon-link.primary:hover {
+        background: #256b2a;
+      }
+
+      .modal {
+        position: fixed;
+        inset: 0;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        padding: 18px;
+        z-index: 200;
+      }
+
+      .modal.open {
+        display: flex;
+      }
+
+      .modal-backdrop {
+        position: absolute;
+        inset: 0;
+        background: rgba(2, 6, 23, 0.62);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+      }
+
+      .modal-panel {
+        position: relative;
+        width: min(940px, 100%);
+        border-radius: 24px;
+        border: 1px solid var(--border);
+        background: rgba(255, 255, 255, 0.94);
+        box-shadow: var(--shadow);
+        overflow: hidden;
+      }
+
+      html[data-theme="dark"] .modal-panel {
+        background: rgba(8, 17, 12, 0.92);
+      }
+
+      .modal-header {
+        padding: 16px 16px 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+      }
+
+      .modal-title {
+        margin: 0;
+        font-size: 1.15rem;
+        letter-spacing: -0.02em;
+      }
+
+      .modal-close {
+        width: 44px;
+        height: 44px;
+        border-radius: 14px;
+        border: 1px solid var(--border);
+        background: rgba(255, 255, 255, 0.9);
+        display: grid;
+        place-items: center;
+        cursor: pointer;
+        transition: transform 160ms ease, box-shadow 160ms ease;
+      }
+
+      html[data-theme="dark"] .modal-close {
+        background: rgba(255, 255, 255, 0.06);
+      }
+
+      .modal-body {
+        padding: 16px;
+        display: grid;
+        gap: 16px;
+      }
+
+      .modal-grid {
+        display: grid;
+        gap: 16px;
+        grid-template-columns: 1fr;
+      }
+
+      .modal-photo {
+        border-radius: 22px;
+        border: 1px solid var(--border);
+        overflow: hidden;
+        background: linear-gradient(135deg, rgba(46, 125, 50, 0.16), rgba(21, 101, 192, 0.16));
+        min-height: 220px;
+      }
+
+      .modal-photo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      .modal-info p {
+        margin: 0;
+        color: var(--muted);
+        font-weight: 650;
+      }
+
+      .modal-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 12px;
+      }
+
+      html[data-preview="mobile"] .container {
+        max-width: 430px;
+      }
+
+      .gallery {
+        display: grid;
+        gap: 14px;
+      }
+
+      .gallery-item {
+        border-radius: 22px;
+        border: 1px solid var(--border);
+        background: var(--surface);
+        box-shadow: var(--shadow-sm);
+        overflow: hidden;
+        transition: transform 160ms ease, box-shadow 160ms ease;
+      }
+
+      .gallery-item:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow);
+      }
+
+      .gallery-media {
+        height: 190px;
+        background: linear-gradient(135deg, rgba(46, 125, 50, 0.22), rgba(21, 101, 192, 0.22));
+        position: relative;
+        filter: saturate(1.25) contrast(1.06);
+      }
+
+      .gallery-media svg {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 1;
+      }
+
+      .gallery-caption {
+        padding: 14px 16px 16px;
+        display: grid;
+        gap: 6px;
+      }
+
+      .gallery-caption strong {
+        letter-spacing: -0.02em;
+        font-size: 1.05rem;
+      }
+
+      .gallery-caption span {
+        color: var(--muted);
+        font-weight: 600;
+      }
+
+      .contact {
+        display: grid;
+        gap: 16px;
+      }
+
+      .contact-card {
+        border-radius: 22px;
+        border: 1px solid var(--border);
+        background: var(--surface);
+        box-shadow: var(--shadow-sm);
+        padding: 18px;
+        display: grid;
+        gap: 10px;
+      }
+
+      html[data-theme="dark"] .contact-card {
+        background: rgba(255, 255, 255, 0.05);
+      }
+
+      .contact-card strong {
+        letter-spacing: -0.02em;
+      }
+
+      .contact-card p {
+        margin: 0;
+        color: var(--muted);
+        font-weight: 600;
+      }
+
+      .site-footer {
+        padding: 26px 0 34px;
+        border-top: 1px solid var(--border);
+        background: var(--surface);
+      }
+
+      html[data-theme="dark"] .site-footer {
+        background: rgba(255, 255, 255, 0.02);
+      }
+
+      .footer-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 14px;
+        flex-wrap: wrap;
+      }
+
+      .footer-meta {
+        color: var(--muted);
+        font-weight: 700;
+      }
+
+      .to-top {
+        width: 44px;
+        height: 44px;
+        border-radius: 14px;
+        border: 1px solid var(--border);
+        background: var(--surface);
+        display: grid;
+        place-items: center;
+        transition: transform 160ms ease, box-shadow 160ms ease;
+      }
+
+      .to-top:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-sm);
+      }
+
+      .icon {
+        width: 20px;
+        height: 20px;
+      }
+
+      .icon.lg {
+        width: 22px;
+        height: 22px;
+      }
+
+      .reveal {
+        opacity: 0;
+        transform: translateY(14px);
+        transition: opacity 720ms ease, transform 720ms ease;
+      }
+
+      .reveal.in {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      @media (min-width: 860px) {
+        .nav-toggle {
+          display: none;
+        }
+
+        .nav-list {
+          display: flex;
+        }
+
+        body.nav-open .nav-list {
+          position: static;
+          width: auto;
+          padding: 0;
+          border: none;
+          box-shadow: none;
+          background: transparent;
+          backdrop-filter: none;
+          -webkit-backdrop-filter: none;
+          display: flex;
+        }
+
+        .hero-inner {
+          grid-template-columns: 1.12fr 0.88fr;
+          gap: 34px;
+        }
+
+        .grid-2 {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .grid-3 {
+          grid-template-columns: repeat(3, 1fr);
+        }
+
+        .fronts {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .people-grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
+
+        .gallery {
+          grid-template-columns: repeat(3, 1fr);
+        }
+
+        .contact {
+          grid-template-columns: repeat(3, 1fr);
+        }
+
+        .modal-grid {
+          grid-template-columns: 0.9fr 1.1fr;
+          align-items: start;
+        }
+      }
+
+      @media (max-width: 420px) {
+        .container {
+          padding: 0 16px;
+        }
+
+        .hero {
+          padding: 70px 0 44px;
+        }
+
+        .btn {
+          width: 100%;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+        .reveal {
+          opacity: 1;
+          transform: none;
+          transition: none;
+        }
+        .progress > div {
+          transition: none;
+        }
+        .progress > div::after {
+          animation: none;
+          opacity: 0;
+        }
+      }
+    </style>
   </head>
   <body>
     <a class="skip-link" href="#inicio">Pular para o conteúdo</a>
 
+    <svg aria-hidden="true" style="position: absolute; width: 0; height: 0; overflow: hidden">
+      <symbol id="i-dna" viewBox="0 0 24 24">
+        <path
+          fill="currentColor"
+          d="M7 2h2v2H7V2Zm8 0h2v2h-2V2ZM8 6h8v2H8V6Zm-1 4h2v2H7v-2Zm8 0h2v2h-2v-2ZM8 14h8v2H8v-2Zm-1 4h2v2H7v-2Zm8 0h2v2h-2v-2Z"
+        />
+      </symbol>
+      <symbol id="i-leaf" viewBox="0 0 24 24">
+        <path
+          fill="currentColor"
+          d="M20 4c-6.6 0-12 3.9-12 10.5c0 2.5 1.1 5.2 3.7 6.5c.6.3 1.3-.2 1.2-.9c-.3-2.1.3-3.9 1.5-5.3c1.3-1.5 3.2-2.5 5.6-2.8c.6-.1 1-.7.8-1.3C20.6 8 20.2 6 20 4ZM4 20c2.8-6.4 8-10.4 15.7-11.4c-.8 2.2-2.7 3.4-5 3.8c-4 .7-6.4 3.7-6.2 7.6H4Z"
+        />
+      </symbol>
+      <symbol id="i-bacteria" viewBox="0 0 24 24">
+        <path
+          fill="currentColor"
+          d="M6.5 7A4.5 4.5 0 0 1 11 2.5h2A4.5 4.5 0 0 1 17.5 7v.5H19a1 1 0 1 1 0 2h-1.5V11H19a1 1 0 1 1 0 2h-1.5v1.5H19a1 1 0 1 1 0 2h-1.7A4.5 4.5 0 0 1 13 21.5h-2A4.5 4.5 0 0 1 6.5 17H5a1 1 0 1 1 0-2h1.5v-1.5H5a1 1 0 1 1 0-2h1.5V9.5H5a1 1 0 1 1 0-2h1.5V7Zm4.5-2.5A2.5 2.5 0 0 0 8.5 7v10A2.5 2.5 0 0 0 11 19.5h2a2.5 2.5 0 0 0 2.5-2.5V7A2.5 2.5 0 0 0 13 4.5h-2Z"
+        />
+      </symbol>
+      <symbol id="i-recycle" viewBox="0 0 24 24">
+        <path
+          fill="currentColor"
+          d="M7.6 6.2L10.2 2l3.1 5.2H10.8c-1.2 0-2.2.7-2.7 1.7l-.5.8H5.7l.6-1c.4-.7.9-1.3 1.3-1.5Zm10.7 2.4l3.7 2.2l-3.7 2.3v-1.6h-2.7c-.7 0-1.3.4-1.6 1l-1.1 2l-1.6-.9l1.2-2.1c.6-1.1 1.8-1.8 3.1-1.8h2.7V8.6ZM3.4 13.7l3.8-2.2v1.6H10c.7 0 1.3.4 1.6 1l1.1 2l-1.6.9l-1.2-2.1c-.6-1.1-1.8-1.8-3.1-1.8H7.2v1.6l-3.8-2.1Z"
+        />
+      </symbol>
+      <symbol id="i-flask" viewBox="0 0 24 24">
+        <path
+          fill="currentColor"
+          d="M9 2h6v2h-1v5.2l4.6 7.3A3.5 3.5 0 0 1 15.6 22H8.4a3.5 3.5 0 0 1-3-5.5L10 9.2V4H9V2Zm3 9.4l-5 7.9c-.7 1.1.1 2.7 1.4 2.7h7.2c1.3 0 2.1-1.6 1.4-2.7l-5-7.9Z"
+        />
+      </symbol>
+      <symbol id="i-search" viewBox="0 0 24 24">
+        <path
+          fill="currentColor"
+          d="M10 2a8 8 0 1 1 4.9 14.3l4.4 4.4l-1.4 1.4l-4.4-4.4A8 8 0 0 1 10 2Zm0 2a6 6 0 1 0 0 12a6 6 0 0 0 0-12Z"
+        />
+      </symbol>
+      <symbol id="i-gear" viewBox="0 0 24 24">
+        <path
+          fill="currentColor"
+          d="M19.4 13a7.7 7.7 0 0 0 0-2l2-1.4l-2-3.4l-2.3.7a7.3 7.3 0 0 0-1.7-1L15 3h-6L8.6 5.9a7.3 7.3 0 0 0-1.7 1l-2.3-.7l-2 3.4L4.6 11a7.7 7.7 0 0 0 0 2l-2 1.4l2 3.4l2.3-.7c.5.4 1.1.8 1.7 1L9 21h6l.4-2.9c.6-.2 1.2-.6 1.7-1l2.3.7l2-3.4l-2-1.4ZM12 16a4 4 0 1 1 0-8a4 4 0 0 1 0 8Z"
+        />
+      </symbol>
+      <symbol id="i-check" viewBox="0 0 24 24">
+        <path fill="currentColor" d="m9.5 16.2l-3.7-3.7l1.4-1.4l2.3 2.3l7.3-7.3l1.4 1.4l-8.7 8.7Z" />
+      </symbol>
+      <symbol id="i-factory" viewBox="0 0 24 24">
+        <path
+          fill="currentColor"
+          d="M3 21V9l6 3V9l6 3V9l6 3v9H3Zm2-2h14v-5.4l-4-2v3l-6-3v3l-4-2V19Z"
+        />
+      </symbol>
+      <symbol id="i-megaphone" viewBox="0 0 24 24">
+        <path
+          fill="currentColor"
+          d="M3 10v4c0 1.1.9 2 2 2h2l2.2 3.3c.6.9 2 .5 2-.6V16h2l7 3V5l-7 3H5c-1.1 0-2 .9-2 2Zm4 0h8v4H7v-4Z"
+        />
+      </symbol>
+      <symbol id="i-menu" viewBox="0 0 24 24">
+        <path fill="currentColor" d="M4 7h16v2H4V7Zm0 8h16v2H4v-2Zm0-4h16v2H4v-2Z" />
+      </symbol>
+      <symbol id="i-chevron-right" viewBox="0 0 24 24">
+        <path fill="currentColor" d="M9 6l6 6l-6 6l-1.4-1.4l4.6-4.6L7.6 7.4L9 6Z" />
+      </symbol>
+      <symbol id="i-chevron-up" viewBox="0 0 24 24">
+        <path fill="currentColor" d="M12 8l6 6l-1.4 1.4L12 10.8l-4.6 4.6L6 14l6-6Z" />
+      </symbol>
+      <symbol id="i-moon" viewBox="0 0 24 24">
+        <path
+          fill="currentColor"
+          d="M12.7 2.1c.4 0 .7.3.7.7c0 .3-.2.6-.5.7A7.8 7.8 0 1 0 20.5 11c.1-.3.4-.5.7-.5c.4 0 .7.3.7.7A9.5 9.5 0 1 1 12.7 2.1Z"
+        />
+      </symbol>
+      <symbol id="i-sun" viewBox="0 0 24 24">
+        <path
+          fill="currentColor"
+          d="M12 18a6 6 0 1 1 0-12a6 6 0 0 1 0 12Zm0-2a4 4 0 1 0 0-8a4 4 0 0 0 0 8ZM11 2h2v3h-2V2Zm0 17h2v3h-2v-3ZM2 11h3v2H2v-2Zm17 0h3v2h-3v-2ZM4.2 5.6l1.4-1.4l2.1 2.1l-1.4 1.4L4.2 5.6Zm13.5 13.5l1.4-1.4l2.1 2.1l-1.4 1.4l-2.1-2.1ZM18.4 4.2l1.4 1.4l-2.1 2.1l-1.4-1.4l2.1-2.1ZM5.6 18.4l1.4 1.4l-2.1 2.1l-1.4-1.4l2.1-2.1Z"
+        />
+      </symbol>
+      <symbol id="i-phone" viewBox="0 0 24 24">
+        <path
+          fill="currentColor"
+          d="M7 2h10a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2Zm0 2v16h10V4H7Zm4 13h2v2h-2v-2Z"
+        />
+      </symbol>
+      <symbol id="i-monitor" viewBox="0 0 24 24">
+        <path
+          fill="currentColor"
+          d="M4 4h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-6v2h3v2H7v-2h3v-2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Zm0 2v10h16V6H4Z"
+        />
+      </symbol>
+      <symbol id="i-instagram" viewBox="0 0 24 24">
+        <path
+          fill="currentColor"
+          d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm10 2H7a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3Zm-5 4.5A3.5 3.5 0 1 1 8.5 12A3.5 3.5 0 0 1 12 8.5Zm0 2A1.5 1.5 0 1 0 13.5 12A1.5 1.5 0 0 0 12 10.5ZM18 6.8a1 1 0 1 1 0 2a1 1 0 0 1 0-2Z"
+        />
+      </symbol>
+      <symbol id="i-arrow" viewBox="0 0 24 24">
+        <path fill="currentColor" d="M12 4l1.4 1.4L7.8 11H20v2H7.8l5.6 5.6L12 20L4 12l8-8Z" />
+      </symbol>
+    </svg>
+
     <header class="site-header" id="topo">
       <div class="container header-inner">
-        <a class="brand" href="#inicio" aria-label="Ir para Início">
+        <a class="brand" href="#inicio" aria-label="Ir para o início">
           <span class="brand-mark" aria-hidden="true">
-            <i class="fa-solid fa-dna"></i>
+            <svg class="icon lg"><use href="#i-dna"></use></svg>
           </span>
-          <span class="brand-name">Projeto CSG</span>
-          <span class="brand-tag">Bio Lab</span>
+          <span class="brand-name">Projetos de Biotecnologia</span>
         </a>
 
-        <div class="header-actions">
-          <button class="theme-toggle" type="button" aria-label="Alternar tema" aria-pressed="false">
-            <i class="fa-solid fa-moon" aria-hidden="true"></i>
-          </button>
+        <nav class="site-nav" aria-label="Navegação principal">
+          <div class="header-controls" aria-label="Preferências">
+            <button class="control-btn" id="themeToggle" type="button" aria-label="Alternar tema" aria-pressed="false" title="Modo claro/escuro">
+              <svg class="icon" aria-hidden="true"><use href="#i-moon"></use></svg>
+            </button>
+            <button
+              class="control-btn"
+              id="viewToggle"
+              type="button"
+              aria-label="Pré-visualizar como celular"
+              aria-pressed="false"
+              title="Prévia de celular"
+            >
+              <svg class="icon" aria-hidden="true"><use href="#i-phone"></use></svg>
+            </button>
+          </div>
 
           <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="menu">
-            <span class="sr-only">Abrir menu</span>
-            <i class="fa-solid fa-bars" aria-hidden="true"></i>
+            <svg class="icon" aria-hidden="true"><use href="#i-menu"></use></svg>
+            <span class="sr-only" style="position: absolute; width: 1px; height: 1px; overflow: hidden">Abrir menu</span>
           </button>
-        </div>
 
-        <nav class="site-nav" aria-label="Navegação principal">
           <ul class="nav-list" id="menu">
-            <li><a class="nav-link" href="#inicio">Início</a></li>
-            <li><a class="nav-link" href="#sobre">Projetos</a></li>
+            <li><a class="nav-link" href="#projetos">Projetos</a></li>
+            <li><a class="nav-link" href="#impacto">Impacto</a></li>
+            <li><a class="nav-link" href="#etapas">Etapas</a></li>
             <li><a class="nav-link" href="#equipe">Equipe</a></li>
-            <li><a class="nav-link" href="#alunos">Pesquisadores</a></li>
-            <li><a class="nav-link" href="#linha-do-tempo">Cronograma</a></li>
-            <li><a class="nav-link" href="#galeria">Galeria</a></li>
-            <li><a class="nav-link" href="#contato">Contato</a></li>
+            <li><a class="nav-link" href="#participantes">Frentes</a></li>
+            <li><a class="nav-link" href="#galeria">Imagens</a></li>
+            <li><a class="nav-link" href="artigos.html">Artigos</a></li>
+            <li><a class="nav-link" href="#contato">Feira</a></li>
           </ul>
         </nav>
       </div>
+      <div class="scroll-progress" aria-hidden="true"><div id="scrollProgressBar"></div></div>
     </header>
 
-    <main>
-      <section class="hero" id="inicio" aria-labelledby="hero-title">
-        <div class="hero-bg-grid"></div>
+    <main id="inicio">
+      <section class="hero">
         <div class="container hero-inner">
-          <div class="hero-content reveal">
+          <div class="reveal" data-reveal>
             <p class="kicker">
-              <i class="fa-solid fa-microscope" aria-hidden="true"></i>
-              Biotecnologia Aplicada
+              <svg class="icon" aria-hidden="true"><use href="#i-flask"></use></svg>
+              Projeto escolar de Biologia & Biotecnologia
             </p>
 
-            <h1 class="hero-title" id="hero-title">
-              Engenharia <span class="accent">Biológica</span> para <br/>
-              um <span class="accent2">Ecossistema</span> Sustentável.
-            </h1>
+            <h1 class="hero-title">Projetos de <span class="accent">Biotecnologia</span> para o Futuro</h1>
 
             <p class="hero-subtitle">
-              Pesquisas científicas de ponta desenvolvidas por jovens pesquisadores. Exploramos soluções microbiológicas para os desafios mais urgentes do nosso planeta.
+              Dois projetos científicos usando biotecnologia para resolver problemas ambientais reais: reduzir agrotóxicos na agricultura e
+              diminuir a poluição por plástico PET.
             </p>
 
             <div class="hero-actions">
-              <a class="btn btn-primary" href="#sobre">
-                Explorar Pesquisas
-                <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+              <a class="btn btn-primary" href="#projetos">
+                Ver os projetos
+                <svg class="icon" aria-hidden="true"><use href="#i-chevron-right"></use></svg>
               </a>
-              <a class="btn btn-ghost" href="#linha-do-tempo">
-                Método Científico
-                <i class="fa-solid fa-flask" aria-hidden="true"></i>
+              <a class="btn btn-ghost" href="#etapas">
+                Etapas do projeto
+                <svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg>
               </a>
             </div>
 
-            <div class="hero-metrics">
-              <div class="metric-card">
-                <p class="metric-value">02</p>
-                <p class="metric-label">Linhas de Pesquisa</p>
-              </div>
-              <div class="metric-card">
-                <p class="metric-value">11</p>
-                <p class="metric-label">Jovens Cientistas</p>
-              </div>
-              <div class="metric-card">
-                <p class="metric-value">2026</p>
-                <p class="metric-label">Ciclo Atual</p>
-              </div>
-            </div>
+            <ul class="hero-highlights">
+              <li>
+                <svg class="icon" aria-hidden="true" style="color: var(--primary)"><use href="#i-leaf"></use></svg>
+                <span><strong>Biofertilizante natural</strong> a partir de bactérias e resíduos orgânicos.</span>
+              </li>
+              <li>
+                <svg class="icon" aria-hidden="true" style="color: var(--secondary)"><use href="#i-bacteria"></use></svg>
+                <span><strong>Bactéria que degrada PET</strong> com foco em acelerar o metabolismo.</span>
+              </li>
+              <li>
+                <svg class="icon" aria-hidden="true" style="color: var(--secondary)"><use href="#i-recycle"></use></svg>
+                <span><strong>Objetivo final:</strong> sustentabilidade com ciência, dados e divulgação.</span>
+              </li>
+            </ul>
           </div>
 
-          <div class="hero-visual reveal" aria-hidden="true">
-            <div class="dashboard-panel">
-              <div class="dash-bg-glow"></div>
-              
-              <div class="dash-card dash-card-1">
-                <div class="dash-icon"><i class="fa-solid fa-leaf"></i></div>
-                <div class="dash-info">
-                  <h4>Biofertilizante</h4>
-                  <p>Eficiência Sintrófica</p>
-                  <div class="progress-bar"><div class="progress p-green" style="width: 88%"></div></div>
+          <aside class="hero-panel reveal" data-reveal aria-label="Resumo do projeto">
+            <div class="panel-header">
+              <div class="panel-title">
+                <svg class="icon lg" aria-hidden="true" style="color: var(--secondary)"><use href="#i-search"></use></svg>
+                Painel da Feira
+              </div>
+              <span class="panel-badge">Biologia + Tecnologia</span>
+            </div>
+
+            <div class="panel-grid">
+              <div class="panel-metric" data-progress="86">
+                <div class="metric-icon green" aria-hidden="true">
+                  <svg class="icon"><use href="#i-leaf"></use></svg>
                 </div>
-                <div class="dash-stats">88%</div>
+                <div>
+                  <div class="metric-kpi"><strong>Biofertilizante</strong><span>acessível</span></div>
+                  <div class="progress" aria-hidden="true"><div></div></div>
+                </div>
               </div>
 
-              <div class="dash-card dash-card-2">
-                <div class="dash-icon"><i class="fa-solid fa-microbe"></i></div>
-                <div class="dash-info">
-                  <h4>Degradação PET</h4>
-                  <p>Taxa Enzimática</p>
-                  <div class="progress-bar"><div class="progress p-blue" style="width: 94%"></div></div>
+              <div class="panel-metric" data-progress="92">
+                <div class="metric-icon blue" aria-hidden="true">
+                  <svg class="icon"><use href="#i-recycle"></use></svg>
                 </div>
-                <div class="dash-stats">94 U/mg</div>
+                <div>
+                  <div class="metric-kpi"><strong>Degradação PET</strong><span>mais rápida</span></div>
+                  <div class="progress" aria-hidden="true"><div></div></div>
+                </div>
               </div>
 
-              <div class="dash-card dash-card-3">
-                 <div class="dna-animation">
-                    <div class="strand"></div><div class="strand"></div><div class="strand"></div><div class="strand"></div><div class="strand"></div>
-                 </div>
-                 <p class="dash-note">Análise Genômica em Tempo Real</p>
+              <div class="panel-metric" data-progress="78">
+                <div class="metric-icon teal" aria-hidden="true">
+                  <svg class="icon"><use href="#i-megaphone"></use></svg>
+                </div>
+                <div>
+                  <div class="metric-kpi"><strong>Divulgação</strong><span>feiras & campeonatos</span></div>
+                  <div class="progress" aria-hidden="true"><div></div></div>
+                </div>
               </div>
             </div>
-            
-            <div class="bio-particle p1"></div>
-            <div class="bio-particle p2"></div>
-            <div class="bio-particle p3"></div>
-            <div class="bio-particle p4"></div>
-            <div class="bio-particle p5"></div>
-          </div>
+          </aside>
         </div>
       </section>
 
-      <section class="section" id="sobre" aria-labelledby="sobre-title">
+      <section class="section" id="projetos" aria-labelledby="projetos-title">
         <div class="container">
-          <header class="section-header reveal">
-            <h2 class="section-title" id="sobre-title">Linhas de Pesquisa</h2>
-            <p class="section-subtitle">
-              Nossos estudos concentram-se no uso avançado de microrganismos para promover a regeneração ambiental.
-            </p>
+          <header class="section-header reveal" data-reveal>
+            <h2 class="section-title" id="projetos-title">Os Dois Projetos Científicos</h2>
+            <p class="section-subtitle">Biotecnologia aplicada para resolver problemas ambientais com baixo custo e alto impacto.</p>
           </header>
 
-          <div class="about-grid projects-grid">
-            <article class="card reveal card-hover-3d">
-              <div class="card-glow"></div>
-              <div class="card-icon">
-                <i class="fa-solid fa-leaf" aria-hidden="true"></i>
+          <div class="grid grid-2">
+            <article class="card reveal" data-reveal>
+              <div class="card-header">
+                <div class="card-kicker">
+                  <svg class="icon" aria-hidden="true" style="color: var(--primary)"><use href="#i-leaf"></use></svg>
+                  Projeto 01
+                </div>
+                <span class="pill">Biofertilizante Natural</span>
               </div>
-              <h3 class="card-title">Biofertilizante Sintrófico</h3>
+              <h3 class="card-title">Produção de adubo com bactérias e resíduos orgânicos</h3>
               <p class="card-text">
-                <strong>Composição:</strong> Consórcio bacteriano especializado e reaproveitamento de biomassa (resíduos orgânicos urbanos e calcário biológico).
+                A ideia é transformar lixo orgânico em fertilizante natural barato e acessível, usando bactérias para acelerar a decomposição e
+                enriquecer o composto.
               </p>
-              <div class="card-divider"></div>
-              <p class="card-text">
-                <strong>Objetivo:</strong> Formular um insumo agrícola de alto rendimento que promova a fixação biológica de nitrogênio e a solubilização de fósforo no solo.
-              </p>
-              <div class="card-divider"></div>
-              <p class="card-text">
-                <strong>Impacto:</strong> Substituição em larga escala de fertilizantes sintéticos, reduzindo a eutrofização de rios e reaproveitando toneladas de resíduos sólidos.
-              </p>
+              <ul class="list">
+                <li>
+                  <svg class="icon" aria-hidden="true" style="color: var(--primary)"><use href="#i-check"></use></svg>
+                  <span><strong>Materiais:</strong> casca de ovo, restos orgânicos de feiras e lixo orgânico residencial.</span>
+                </li>
+                <li>
+                  <svg class="icon" aria-hidden="true" style="color: var(--primary)"><use href="#i-check"></use></svg>
+                  <span><strong>Objetivo:</strong> criar um fertilizante natural barato e acessível.</span>
+                </li>
+                <li>
+                  <svg class="icon" aria-hidden="true" style="color: var(--primary)"><use href="#i-check"></use></svg>
+                  <span><strong>Impacto:</strong> reduzir agrotóxicos e dar destino correto ao lixo orgânico da cidade.</span>
+                </li>
+              </ul>
             </article>
 
-            <article class="card reveal card-hover-3d">
-              <div class="card-glow"></div>
-              <div class="card-icon">
-                <i class="fa-solid fa-microbe" aria-hidden="true"></i>
+            <article class="card reveal" data-reveal>
+              <div class="card-header">
+                <div class="card-kicker">
+                  <svg class="icon" aria-hidden="true" style="color: var(--secondary)"><use href="#i-bacteria"></use></svg>
+                  Projeto 02
+                </div>
+                <span class="pill pill-blue">Bactéria que Degrada PET</span>
               </div>
-              <h3 class="card-title">Degradação Enzimática de PET</h3>
+              <h3 class="card-title">Bactéria capaz de degradar garrafas PET com metabolismo acelerado</h3>
               <p class="card-text">
-                <strong>Mecanismo:</strong> Engenharia e otimização metabólica de cepas bacterianas produtoras de enzimas super-ativas (PETases e MHETases).
+                O foco do projeto é acelerar o metabolismo da bactéria para que ela consuma o plástico muito mais rápido, diminuindo o tempo em
+                que o PET fica poluindo rios, mares e solos.
               </p>
-              <div class="card-divider"></div>
-              <p class="card-text">
-                <strong>Objetivo:</strong> Acelerar a hidrólise de polímeros PET, convertendo plásticos complexos em monômeros benignos em condições otimizadas de laboratório.
-              </p>
-              <div class="card-divider"></div>
-              <p class="card-text">
-                <strong>Impacto:</strong> Uma solução biológica viável para o acúmulo de plásticos nos oceanos, criando um ciclo fechado para a indústria de embalagens.
-              </p>
+              <ul class="list">
+                <li>
+                  <svg class="icon" aria-hidden="true" style="color: var(--secondary)"><use href="#i-check"></use></svg>
+                  <span><strong>Desenvolvimento:</strong> otimização de condições (pH, temperatura, nutrientes) e seleção de melhor desempenho.</span>
+                </li>
+                <li>
+                  <svg class="icon" aria-hidden="true" style="color: var(--secondary)"><use href="#i-check"></use></svg>
+                  <span><strong>Foco:</strong> aumentar velocidade de consumo do PET (mais rápido que condições comuns).</span>
+                </li>
+                <li>
+                  <svg class="icon" aria-hidden="true" style="color: var(--secondary)"><use href="#i-check"></use></svg>
+                  <span><strong>Impacto:</strong> reduzir poluição plástica e incentivar soluções biológicas sustentáveis.</span>
+                </li>
+              </ul>
             </article>
           </div>
         </div>
       </section>
 
-      <section class="section section-alt" id="equipe" aria-labelledby="equipe-title">
+      <section class="section alt" id="impacto" aria-labelledby="impacto-title">
         <div class="container">
-          <header class="section-header reveal">
-            <h2 class="section-title" id="equipe-title">Investigadores Principais</h2>
+          <header class="section-header reveal" data-reveal>
+            <h2 class="section-title" id="impacto-title">Por que Isso Importa?</h2>
             <p class="section-subtitle">
-              Líderes das frentes de pesquisa em bioinformática, genética e microbiologia.
+              Os dois projetos usam biotecnologia para enfrentar grandes problemas ambientais que afetam a agricultura, os rios, os mares e a
+              saúde das pessoas.
             </p>
           </header>
 
           <div class="grid grid-3">
-            <article class="profile-card reveal">
-              <div class="profile-avatar-wrap">
-                <img class="avatar" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='256' height='256'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop stop-color='%2310b981'/%3E%3Cstop offset='1' stop-color='%230ea5e9'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='256' height='256' rx='56' fill='url(%23g)'/%3E%3Ctext x='50%25' y='56%25' text-anchor='middle' font-family='Outfit, sans-serif' font-size='84' font-weight='700' fill='%2302080a'%3EAJ%3C/text%3E%3C/svg%3E" alt="Ana Julia" />
-                <div class="status-dot"></div>
+            <div class="callout reveal" data-reveal>
+              <h3>
+                <svg class="icon" aria-hidden="true" style="color: var(--primary)"><use href="#i-leaf"></use></svg>
+                Reduzir agrotóxicos
+              </h3>
+              <p>Fertilizante natural mais acessível pode diminuir dependência de insumos químicos para pequenos agricultores.</p>
+            </div>
+            <div class="callout reveal" data-reveal>
+              <h3>
+                <svg class="icon" aria-hidden="true" style="color: var(--secondary)"><use href="#i-recycle"></use></svg>
+                Diminuir poluição por plástico
+              </h3>
+              <p>Degradar PET mais rápido reduz o tempo de permanência do plástico no ambiente e seus efeitos na fauna e flora.</p>
+            </div>
+            <div class="callout reveal" data-reveal>
+              <h3>
+                <svg class="icon" aria-hidden="true" style="color: var(--secondary)"><use href="#i-flask"></use></svg>
+                Biotecnologia na prática
+              </h3>
+              <p>Mostra ciência aplicada: hipótese, testes, melhoria do processo e apresentação em feiras e campeonatos.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="etapas" aria-labelledby="etapas-title">
+        <div class="container">
+          <header class="section-header reveal" data-reveal>
+            <h2 class="section-title" id="etapas-title">Etapas do Projeto</h2>
+            <p class="section-subtitle">Do estudo inicial à divulgação científica: como um projeto de biotecnologia sai do papel.</p>
+          </header>
+
+          <div class="steps">
+            <div class="step reveal" data-reveal>
+              <div class="step-icon" aria-hidden="true"><svg class="icon"><use href="#i-search"></use></svg></div>
+              <div>
+                <h3>Pesquisa científica</h3>
+                <p>Levantamento de referências, definição de hipótese e planejamento do método com segurança e ética.</p>
               </div>
-              <h3 class="profile-name">Ana Julia</h3>
-              <p class="profile-role"><i class="fa-solid fa-laptop-medical"></i> Bioinformática</p>
-              <p class="profile-desc">Análise de sequenciamento genômico e modelagem computacional de enzimas.</p>
-              <div class="profile-actions" aria-label="Redes sociais">
-                <a class="icon-btn" href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
-                <a class="icon-btn" href="#" aria-label="Lattes"><i class="fa-solid fa-graduation-cap"></i></a>
+            </div>
+            <div class="step reveal" data-reveal>
+              <div class="step-icon" aria-hidden="true"><svg class="icon"><use href="#i-gear"></use></svg></div>
+              <div>
+                <h3>Desenvolvimento</h3>
+                <p>Montagem do processo: seleção de materiais, preparação do ambiente e definição de variáveis (tempo, pH, temperatura).</p>
+              </div>
+            </div>
+            <div class="step reveal" data-reveal>
+              <div class="step-icon" aria-hidden="true"><svg class="icon"><use href="#i-check"></use></svg></div>
+              <div>
+                <h3>Testes</h3>
+                <p>Experimentação controlada, coleta de dados e comparação de resultados para melhorar desempenho e confiabilidade.</p>
+              </div>
+            </div>
+            <div class="step reveal" data-reveal>
+              <div class="step-icon" aria-hidden="true"><svg class="icon"><use href="#i-factory"></use></svg></div>
+              <div>
+                <h3>Produção</h3>
+                <p>Padronização do procedimento e preparação para aplicação: baixo custo, repetibilidade e cuidados com armazenamento.</p>
+              </div>
+            </div>
+            <div class="step reveal" data-reveal>
+              <div class="step-icon" aria-hidden="true"><svg class="icon"><use href="#i-megaphone"></use></svg></div>
+              <div>
+                <h3>Divulgação científica</h3>
+                <p>Criação do estande, relatório e apresentação em feiras e campeonatos, explicando impacto e método de forma clara.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="equipe" aria-labelledby="equipe-title">
+        <div class="container">
+          <header class="section-header reveal" data-reveal>
+            <h2 class="section-title" id="equipe-title">Equipe do Projeto</h2>
+            <p class="section-subtitle">Clique em um participante para abrir a janela com detalhes e redes sociais.</p>
+          </header>
+
+          <div class="people-grid" aria-label="Participantes do projeto">
+            <article
+              class="person-card reveal"
+              data-reveal
+              data-name="Ana Souza"
+              data-front="Pesquisa"
+              data-role="Levantamento científico"
+              data-bio="Responsável por organizar referências, hipóteses e critérios do método para sustentar o estande."
+              data-instagram="https://instagram.com/"
+              data-photo="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop stop-color='%232E7D32'/%3E%3Cstop offset='1' stop-color='%231565C0'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='300' height='300' rx='40' fill='url(%23g)'/%3E%3Ctext x='50%25' y='56%25' text-anchor='middle' font-family='system-ui,Segoe UI,Arial' font-size='92' font-weight='800' fill='white'%3EAS%3C/text%3E%3C/svg%3E"
+            >
+              <div class="person-avatar" aria-hidden="true">
+                <img
+                  src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop stop-color='%232E7D32'/%3E%3Cstop offset='1' stop-color='%231565C0'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='300' height='300' rx='40' fill='url(%23g)'/%3E%3Ctext x='50%25' y='56%25' text-anchor='middle' font-family='system-ui,Segoe UI,Arial' font-size='92' font-weight='800' fill='white'%3EAS%3C/text%3E%3C/svg%3E"
+                  alt="Foto de Ana Souza"
+                />
+              </div>
+              <div class="person-main">
+                <h3 class="person-name">Ana Souza</h3>
+                <div class="person-meta">
+                  <span class="badge"><svg class="icon" aria-hidden="true"><use href="#i-search"></use></svg> Pesquisa</span>
+                  <span>Levantamento científico</span>
+                </div>
+                <div class="person-actions">
+                  <a class="icon-link primary" href="https://instagram.com/" target="_blank" rel="noreferrer">
+                    <svg class="icon" aria-hidden="true"><use href="#i-instagram"></use></svg>
+                    Instagram
+                  </a>
+                </div>
               </div>
             </article>
 
-            <article class="profile-card reveal">
-              <div class="profile-avatar-wrap">
-                <img class="avatar" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='256' height='256'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop stop-color='%2310b981'/%3E%3Cstop offset='1' stop-color='%230ea5e9'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='256' height='256' rx='56' fill='url(%23g)'/%3E%3Ctext x='50%25' y='56%25' text-anchor='middle' font-family='Outfit, sans-serif' font-size='84' font-weight='700' fill='%2302080a'%3EBR%3C/text%3E%3C/svg%3E" alt="Bruno Rocha" />
-                <div class="status-dot"></div>
+            <article
+              class="person-card reveal"
+              data-reveal
+              data-name="Bruno Lima"
+              data-front="Desenvolvimento"
+              data-role="Montagem do biofertilizante"
+              data-bio="Foca em preparar os materiais orgânicos, controlar variáveis e registrar o processo do fertilizante natural."
+              data-instagram="https://instagram.com/"
+              data-photo="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop stop-color='%231565C0'/%3E%3Cstop offset='1' stop-color='%232E7D32'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='300' height='300' rx='40' fill='url(%23g)'/%3E%3Ctext x='50%25' y='56%25' text-anchor='middle' font-family='system-ui,Segoe UI,Arial' font-size='92' font-weight='800' fill='white'%3EBL%3C/text%3E%3C/svg%3E"
+            >
+              <div class="person-avatar" aria-hidden="true">
+                <img
+                  src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop stop-color='%231565C0'/%3E%3Cstop offset='1' stop-color='%232E7D32'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='300' height='300' rx='40' fill='url(%23g)'/%3E%3Ctext x='50%25' y='56%25' text-anchor='middle' font-family='system-ui,Segoe UI,Arial' font-size='92' font-weight='800' fill='white'%3EBL%3C/text%3E%3C/svg%3E"
+                  alt="Foto de Bruno Lima"
+                />
               </div>
-              <h3 class="profile-name">Bruno Rocha</h3>
-              <p class="profile-role"><i class="fa-solid fa-dna"></i> Engenharia Genética</p>
-              <p class="profile-desc">Edição de plasmídeos e otimização de vias metabólicas bacterianas.</p>
-              <div class="profile-actions" aria-label="Redes sociais">
-                <a class="icon-btn" href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
-                <a class="icon-btn" href="#" aria-label="Lattes"><i class="fa-solid fa-graduation-cap"></i></a>
+              <div class="person-main">
+                <h3 class="person-name">Bruno Lima</h3>
+                <div class="person-meta">
+                  <span class="badge"><svg class="icon" aria-hidden="true"><use href="#i-gear"></use></svg> Desenvolvimento</span>
+                  <span>Montagem do biofertilizante</span>
+                </div>
+                <div class="person-actions">
+                  <a class="icon-link primary" href="https://instagram.com/" target="_blank" rel="noreferrer">
+                    <svg class="icon" aria-hidden="true"><use href="#i-instagram"></use></svg>
+                    Instagram
+                  </a>
+                </div>
               </div>
             </article>
 
-            <article class="profile-card reveal">
-              <div class="profile-avatar-wrap">
-                <img class="avatar" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='256' height='256'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop stop-color='%2310b981'/%3E%3Cstop offset='1' stop-color='%230ea5e9'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='256' height='256' rx='56' fill='url(%23g)'/%3E%3Ctext x='50%25' y='56%25' text-anchor='middle' font-family='Outfit, sans-serif' font-size='84' font-weight='700' fill='%2302080a'%3ECS%3C/text%3E%3C/svg%3E" alt="Carla Santos" />
-                <div class="status-dot"></div>
+            <article
+              class="person-card reveal"
+              data-reveal
+              data-name="Carla Martins"
+              data-front="Testes"
+              data-role="Coleta e análise de dados"
+              data-bio="Registra resultados, fotos e comparações de condições para apresentar conclusões com clareza na feira."
+              data-instagram="https://instagram.com/"
+              data-photo="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Crect width='300' height='300' rx='40' fill='%231565C0'/%3E%3Ctext x='50%25' y='56%25' text-anchor='middle' font-family='system-ui,Segoe UI,Arial' font-size='92' font-weight='800' fill='white'%3ECM%3C/text%3E%3C/svg%3E"
+            >
+              <div class="person-avatar" aria-hidden="true">
+                <img
+                  src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Crect width='300' height='300' rx='40' fill='%231565C0'/%3E%3Ctext x='50%25' y='56%25' text-anchor='middle' font-family='system-ui,Segoe UI,Arial' font-size='92' font-weight='800' fill='white'%3ECM%3C/text%3E%3C/svg%3E"
+                  alt="Foto de Carla Martins"
+                />
               </div>
-              <h3 class="profile-name">Carla Santos</h3>
-              <p class="profile-role"><i class="fa-solid fa-viruses"></i> Microbiologia</p>
-              <p class="profile-desc">Cultivo celular in vitro, isolamento de cepas e ensaios de toxicidade.</p>
-              <div class="profile-actions" aria-label="Redes sociais">
-                <a class="icon-btn" href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
-                <a class="icon-btn" href="#" aria-label="Lattes"><i class="fa-solid fa-graduation-cap"></i></a>
+              <div class="person-main">
+                <h3 class="person-name">Carla Martins</h3>
+                <div class="person-meta">
+                  <span class="badge"><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg> Testes</span>
+                  <span>Coleta e análise de dados</span>
+                </div>
+                <div class="person-actions">
+                  <a class="icon-link primary" href="https://instagram.com/" target="_blank" rel="noreferrer">
+                    <svg class="icon" aria-hidden="true"><use href="#i-instagram"></use></svg>
+                    Instagram
+                  </a>
+                </div>
+              </div>
+            </article>
+
+            <article
+              class="person-card reveal"
+              data-reveal
+              data-name="Diego Santos"
+              data-front="Produção"
+              data-role="Padronização e materiais"
+              data-bio="Cuida das quantidades, do preparo de amostras e da organização do material do estande."
+              data-instagram="https://instagram.com/"
+              data-photo="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Crect width='300' height='300' rx='40' fill='%232E7D32'/%3E%3Ctext x='50%25' y='56%25' text-anchor='middle' font-family='system-ui,Segoe UI,Arial' font-size='92' font-weight='800' fill='white'%3EDS%3C/text%3E%3C/svg%3E"
+            >
+              <div class="person-avatar" aria-hidden="true">
+                <img
+                  src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Crect width='300' height='300' rx='40' fill='%232E7D32'/%3E%3Ctext x='50%25' y='56%25' text-anchor='middle' font-family='system-ui,Segoe UI,Arial' font-size='92' font-weight='800' fill='white'%3EDS%3C/text%3E%3C/svg%3E"
+                  alt="Foto de Diego Santos"
+                />
+              </div>
+              <div class="person-main">
+                <h3 class="person-name">Diego Santos</h3>
+                <div class="person-meta">
+                  <span class="badge"><svg class="icon" aria-hidden="true"><use href="#i-factory"></use></svg> Produção</span>
+                  <span>Padronização e materiais</span>
+                </div>
+                <div class="person-actions">
+                  <a class="icon-link primary" href="https://instagram.com/" target="_blank" rel="noreferrer">
+                    <svg class="icon" aria-hidden="true"><use href="#i-instagram"></use></svg>
+                    Instagram
+                  </a>
+                </div>
+              </div>
+            </article>
+
+            <article
+              class="person-card reveal"
+              data-reveal
+              data-name="Evelyn Rocha"
+              data-front="Divulgação científica"
+              data-role="Comunicação e apresentação"
+              data-bio="Estrutura a explicação do estande, cria pôster e garante clareza para diferentes públicos."
+              data-instagram="https://instagram.com/"
+              data-photo="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop stop-color='%232E7D32'/%3E%3Cstop offset='1' stop-color='%231565C0'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='300' height='300' rx='40' fill='url(%23g)'/%3E%3Ctext x='50%25' y='56%25' text-anchor='middle' font-family='system-ui,Segoe UI,Arial' font-size='92' font-weight='800' fill='white'%3EER%3C/text%3E%3C/svg%3E"
+            >
+              <div class="person-avatar" aria-hidden="true">
+                <img
+                  src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop stop-color='%232E7D32'/%3E%3Cstop offset='1' stop-color='%231565C0'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='300' height='300' rx='40' fill='url(%23g)'/%3E%3Ctext x='50%25' y='56%25' text-anchor='middle' font-family='system-ui,Segoe UI,Arial' font-size='92' font-weight='800' fill='white'%3EER%3C/text%3E%3C/svg%3E"
+                  alt="Foto de Evelyn Rocha"
+                />
+              </div>
+              <div class="person-main">
+                <h3 class="person-name">Evelyn Rocha</h3>
+                <div class="person-meta">
+                  <span class="badge"><svg class="icon" aria-hidden="true"><use href="#i-megaphone"></use></svg> Divulgação</span>
+                  <span>Comunicação e apresentação</span>
+                </div>
+                <div class="person-actions">
+                  <a class="icon-link primary" href="https://instagram.com/" target="_blank" rel="noreferrer">
+                    <svg class="icon" aria-hidden="true"><use href="#i-instagram"></use></svg>
+                    Instagram
+                  </a>
+                </div>
               </div>
             </article>
           </div>
         </div>
       </section>
 
-      <section class="section" id="alunos" aria-labelledby="alunos-title">
+      <section class="section alt" id="participantes" aria-labelledby="participantes-title">
         <div class="container">
-          <header class="section-header reveal">
-            <h2 class="section-title" id="alunos-title">Pesquisadores Juniores</h2>
-            <p class="section-subtitle">Apoio técnico vital nas etapas de experimentação em laboratório e pesquisa de campo.</p>
+          <header class="section-header reveal" data-reveal>
+            <h2 class="section-title" id="participantes-title">Participantes por Frente</h2>
+            <p class="section-subtitle">Organização em frentes para trabalhar com eficiência e entregar um projeto completo.</p>
+            <p class="participants-hint">Você pode colocar aqui os nomes da sua equipe em cada frente (turma, série e orientador).</p>
           </header>
 
-          <div class="grid grid-4">
-            <article class="student-card reveal">
-              <img class="avatar avatar-sm" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='128' height='128'%3E%3Crect width='128' height='128' fill='%230f172a'/%3E%3Ctext x='50%25' y='56%25' text-anchor='middle' font-family='Outfit, sans-serif' font-size='48' font-weight='600' fill='%2310b981'%3ELM%3C/text%3E%3C/svg%3E" alt="Lucas Martins" />
-              <h3 class="student-name">Lucas Martins</h3>
-              <p class="student-desc">Pesquisa de campo e amostragem de solo.</p>
-            </article>
-            <article class="student-card reveal">
-              <img class="avatar avatar-sm" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='128' height='128'%3E%3Crect width='128' height='128' fill='%230f172a'/%3E%3Ctext x='50%25' y='56%25' text-anchor='middle' font-family='Outfit, sans-serif' font-size='48' font-weight='600' fill='%2310b981'%3EPF%3C/text%3E%3C/svg%3E" alt="Paula Ferreira" />
-              <h3 class="student-name">Paula Ferreira</h3>
-              <p class="student-desc">Controle de variáveis em biorreatores.</p>
-            </article>
-            <article class="student-card reveal">
-              <img class="avatar avatar-sm" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='128' height='128'%3E%3Crect width='128' height='128' fill='%230f172a'/%3E%3Ctext x='50%25' y='56%25' text-anchor='middle' font-family='Outfit, sans-serif' font-size='48' font-weight='600' fill='%2310b981'%3ERG%3C/text%3E%3C/svg%3E" alt="Rafael Gomes" />
-              <h3 class="student-name">Rafael Gomes</h3>
-              <p class="student-desc">Registro rigoroso de protocolos experimentais.</p>
-            </article>
-            <article class="student-card reveal">
-              <img class="avatar avatar-sm" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='128' height='128'%3E%3Crect width='128' height='128' fill='%230f172a'/%3E%3Ctext x='50%25' y='56%25' text-anchor='middle' font-family='Outfit, sans-serif' font-size='48' font-weight='600' fill='%2310b981'%3EMS%3C/text%3E%3C/svg%3E" alt="Mariana Silva" />
-              <h3 class="student-name">Mariana Silva</h3>
-              <p class="student-desc">Análise bibliográfica e revisão de literatura.</p>
-            </article>
-            <article class="student-card reveal">
-              <img class="avatar avatar-sm" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='128' height='128'%3E%3Crect width='128' height='128' fill='%230f172a'/%3E%3Ctext x='50%25' y='56%25' text-anchor='middle' font-family='Outfit, sans-serif' font-size='48' font-weight='600' fill='%2310b981'%3EJP%3C/text%3E%3C/svg%3E" alt="João Pedro" />
-              <h3 class="student-name">João Pedro</h3>
-              <p class="student-desc">Modelagem de bio-processos industriais.</p>
-            </article>
-            <article class="student-card reveal">
-              <img class="avatar avatar-sm" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='128' height='128'%3E%3Crect width='128' height='128' fill='%230f172a'/%3E%3Ctext x='50%25' y='56%25' text-anchor='middle' font-family='Outfit, sans-serif' font-size='48' font-weight='600' fill='%2310b981'%3EIS%3C/text%3E%3C/svg%3E" alt="Isabela Souza" />
-              <h3 class="student-name">Isabela Souza</h3>
-              <p class="student-desc">Comunicação e divulgação científica.</p>
-            </article>
-            <article class="student-card reveal">
-              <img class="avatar avatar-sm" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='128' height='128'%3E%3Crect width='128' height='128' fill='%230f172a'/%3E%3Ctext x='50%25' y='56%25' text-anchor='middle' font-family='Outfit, sans-serif' font-size='48' font-weight='600' fill='%2310b981'%3EGF%3C/text%3E%3C/svg%3E" alt="Gabriel Freitas" />
-              <h3 class="student-name">Gabriel Freitas</h3>
-              <p class="student-desc">Bioestatística e validação de dados quantitativos.</p>
-            </article>
-            <article class="student-card reveal">
-              <img class="avatar avatar-sm" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='128' height='128'%3E%3Crect width='128' height='128' fill='%230f172a'/%3E%3Ctext x='50%25' y='56%25' text-anchor='middle' font-family='Outfit, sans-serif' font-size='48' font-weight='600' fill='%2310b981'%3ETV%3C/text%3E%3C/svg%3E" alt="Tainá Vieira" />
-              <h3 class="student-name">Tainá Vieira</h3>
-              <p class="student-desc">Preparo de soluções e gestão de reagentes.</p>
-            </article>
-          </div>
-        </div>
-      </section>
+          <div class="fronts">
+            <div class="front reveal" data-reveal>
+              <div class="front-top">
+                <h3 class="front-name">
+                  <svg class="icon" aria-hidden="true" style="color: var(--secondary)"><use href="#i-search"></use></svg>
+                  Pesquisa
+                </h3>
+                <span class="tag">Base teórica</span>
+              </div>
+              <ul>
+                <li>
+                  <svg class="icon" aria-hidden="true" style="color: var(--secondary)"><use href="#i-check"></use></svg>
+                  <span>Levantamento científico sobre decomposição, bactérias e biodegradação de polímeros.</span>
+                </li>
+                <li>
+                  <svg class="icon" aria-hidden="true" style="color: var(--secondary)"><use href="#i-check"></use></svg>
+                  <span>Definição de hipótese, materiais e protocolo experimental seguro.</span>
+                </li>
+              </ul>
+            </div>
 
-      <section class="section section-alt" id="linha-do-tempo" aria-labelledby="timeline-title">
-        <div class="container">
-          <header class="section-header reveal text-center" style="margin: 0 auto 40px;">
-            <h2 class="section-title" id="timeline-title">Evolução Metodológica</h2>
-            <p class="section-subtitle">
-              O pipeline da nossa pesquisa, seguindo rigorosos protocolos do método científico.
-            </p>
-          </header>
+            <div class="front reveal" data-reveal>
+              <div class="front-top">
+                <h3 class="front-name">
+                  <svg class="icon" aria-hidden="true" style="color: var(--primary)"><use href="#i-gear"></use></svg>
+                  Desenvolvimento
+                </h3>
+                <span class="tag">Processo</span>
+              </div>
+              <ul>
+                <li>
+                  <svg class="icon" aria-hidden="true" style="color: var(--primary)"><use href="#i-check"></use></svg>
+                  <span>Montagem do biofertilizante com resíduos orgânicos e definição de condições de fermentação.</span>
+                </li>
+                <li>
+                  <svg class="icon" aria-hidden="true" style="color: var(--primary)"><use href="#i-check"></use></svg>
+                  <span>Planejamento da estratégia para acelerar metabolismo e otimizar degradação do PET.</span>
+                </li>
+              </ul>
+            </div>
 
-          <div class="timeline-wrapper">
-            <ol class="timeline" aria-label="Cronograma de pesquisa">
-            <li class="timeline-item reveal">
-              <div class="timeline-node" aria-hidden="true"></div>
-              <div class="timeline-content">
-                <h3 class="timeline-title">
-                  <i class="fa-solid fa-book-journal-whills" aria-hidden="true"></i>
-                  Fundamentação Teórica
+            <div class="front reveal" data-reveal>
+              <div class="front-top">
+                <h3 class="front-name">
+                  <svg class="icon" aria-hidden="true" style="color: var(--secondary)"><use href="#i-check"></use></svg>
+                  Testes
                 </h3>
-                <p class="timeline-text">Revisão sistemática da literatura sobre vias metabólicas de degradação e ecossistemas microbianos sintróficos.</p>
-                <span class="timeline-tag">Fase 1: Preparação</span>
+                <span class="tag">Resultados</span>
               </div>
-            </li>
-            <li class="timeline-item reveal">
-              <div class="timeline-node" aria-hidden="true"></div>
-              <div class="timeline-content">
-                <h3 class="timeline-title">
-                  <i class="fa-solid fa-vial-virus" aria-hidden="true"></i>
-                  Isolamento in Vitro
+              <ul>
+                <li>
+                  <svg class="icon" aria-hidden="true" style="color: var(--secondary)"><use href="#i-check"></use></svg>
+                  <span>Coleta de dados: tempo de decomposição, cheiro/temperatura, eficiência e registro fotográfico.</span>
+                </li>
+                <li>
+                  <svg class="icon" aria-hidden="true" style="color: var(--secondary)"><use href="#i-check"></use></svg>
+                  <span>Comparação de condições e análise simples para defender as conclusões na feira.</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="front reveal" data-reveal>
+              <div class="front-top">
+                <h3 class="front-name">
+                  <svg class="icon" aria-hidden="true" style="color: var(--primary)"><use href="#i-factory"></use></svg>
+                  Produção
                 </h3>
-                <p class="timeline-text">Coleta em ambientes contaminados, plaqueamento diferencial e obtenção de culturas axênicas das cepas promissoras.</p>
-                <span class="timeline-tag">Fase 2: Laboratório</span>
+                <span class="tag">Padronização</span>
               </div>
-            </li>
-            <li class="timeline-item reveal">
-              <div class="timeline-node" aria-hidden="true"></div>
-              <div class="timeline-content">
-                <h3 class="timeline-title">
-                  <i class="fa-solid fa-temperature-half" aria-hidden="true"></i>
-                  Ensaios Cinéticos
+              <ul>
+                <li>
+                  <svg class="icon" aria-hidden="true" style="color: var(--primary)"><use href="#i-check"></use></svg>
+                  <span>Padronizar receita/quantidades do biofertilizante e orientar armazenamento.</span>
+                </li>
+                <li>
+                  <svg class="icon" aria-hidden="true" style="color: var(--primary)"><use href="#i-check"></use></svg>
+                  <span>Preparar amostras e material do estande com segurança e higiene.</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="front reveal" data-reveal>
+              <div class="front-top">
+                <h3 class="front-name">
+                  <svg class="icon" aria-hidden="true" style="color: var(--secondary)"><use href="#i-megaphone"></use></svg>
+                  Divulgação científica
                 </h3>
-                <p class="timeline-text">Medição da taxa de despolimerização do PET sob controle de pH/temperatura e eficácia do biofertilizante em modelos vegetais.</p>
-                <span class="timeline-tag">Fase 3: Experimentação</span>
+                <span class="tag">Feira</span>
               </div>
-            </li>
-            <li class="timeline-item reveal">
-              <div class="timeline-node" aria-hidden="true"></div>
-              <div class="timeline-content">
-                <h3 class="timeline-title">
-                  <i class="fa-solid fa-chart-line" aria-hidden="true"></i>
-                  Análise Cromatográfica
-                </h3>
-                <p class="timeline-text">Quantificação dos monômeros gerados via HPLC e tratamento estatístico dos biomarcadores de crescimento vegetal.</p>
-                <span class="timeline-tag">Fase 4: Dados</span>
-              </div>
-            </li>
-            <li class="timeline-item reveal">
-              <div class="timeline-node" aria-hidden="true"></div>
-              <div class="timeline-content">
-                <h3 class="timeline-title">
-                  <i class="fa-solid fa-microscope" aria-hidden="true"></i>
-                  Publicação Científica
-                </h3>
-                <p class="timeline-text">Elaboração de artigos acadêmicos, registro de patentes provisórias e divulgação em congressos de biotecnologia.</p>
-                <span class="timeline-tag">Fase 5: Conclusão</span>
-              </div>
-            </li>
-          </ol>
+              <ul>
+                <li>
+                  <svg class="icon" aria-hidden="true" style="color: var(--secondary)"><use href="#i-check"></use></svg>
+                  <span>Storytelling: problema → solução → método → dados → impacto.</span>
+                </li>
+                <li>
+                  <svg class="icon" aria-hidden="true" style="color: var(--secondary)"><use href="#i-check"></use></svg>
+                  <span>Criação de pôster, slides e explicação simples para diferentes públicos.</span>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </section>
 
       <section class="section" id="galeria" aria-labelledby="galeria-title">
         <div class="container">
-          <header class="section-header reveal">
-            <h2 class="section-title" id="galeria-title">Evidências e Ensaios</h2>
-            <p class="section-subtitle">Registros visuais do progresso em laboratório e das metodologias aplicadas.</p>
+          <header class="section-header reveal" data-reveal>
+            <h2 class="section-title" id="galeria-title">Imagens e Ilustrações do Tema</h2>
+            <p class="section-subtitle">Elementos visuais para deixar o estande mais profissional e conectado à biologia e ao meio ambiente.</p>
           </header>
 
-          <div class="gallery-grid" aria-label="Galeria de imagens">
-            <button class="gallery-item reveal" type="button" data-full="1" aria-label="Culturas em Placa">
-              <span class="gallery-thumb g1" aria-hidden="true"></span>
-              <span class="gallery-caption">
-                <i class="fa-solid fa-bacterium" aria-hidden="true"></i>
-                Isolamento de Cepas
-              </span>
-            </button>
-            <button class="gallery-item reveal" type="button" data-full="2" aria-label="Microscopia">
-              <span class="gallery-thumb g2" aria-hidden="true"></span>
-              <span class="gallery-caption">
-                <i class="fa-solid fa-microscope" aria-hidden="true"></i>
-                Microscopia Óptica
-              </span>
-            </button>
-            <button class="gallery-item reveal" type="button" data-full="3" aria-label="Análise de Solo">
-              <span class="gallery-thumb g3" aria-hidden="true"></span>
-              <span class="gallery-caption">
-                <i class="fa-solid fa-seedling" aria-hidden="true"></i>
-                Teste in Vivo
-              </span>
-            </button>
-            <button class="gallery-item reveal" type="button" data-full="4" aria-label="Biorreator">
-              <span class="gallery-thumb g4" aria-hidden="true"></span>
-              <span class="gallery-caption">
-                <i class="fa-solid fa-flask" aria-hidden="true"></i>
-                Biorreator Piloto
-              </span>
-            </button>
+          <div class="gallery">
+            <article class="gallery-item reveal" data-reveal>
+              <div class="gallery-media" aria-hidden="true">
+                <svg viewBox="0 0 800 380" preserveAspectRatio="none">
+                  <defs>
+                    <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+                      <stop offset="0" stop-color="#2E7D32" stop-opacity="0.42" />
+                      <stop offset="1" stop-color="#1565C0" stop-opacity="0.34" />
+                    </linearGradient>
+                  </defs>
+                  <rect width="800" height="380" fill="url(#g1)" />
+                  <circle cx="210" cy="180" r="96" fill="#2E7D32" opacity="0.26" />
+                  <circle cx="520" cy="170" r="130" fill="#1565C0" opacity="0.24" />
+                  <path d="M120 280c110-140 240-170 400-120c90 28 170 80 220 140" fill="none" stroke="#2E7D32" stroke-opacity="0.5" stroke-width="10" />
+                </svg>
+              </div>
+              <div class="gallery-caption">
+                <strong>Compostagem e solo</strong>
+                <span>Resíduos orgânicos viram fertilizante.</span>
+              </div>
+            </article>
+
+            <article class="gallery-item reveal" data-reveal>
+              <div class="gallery-media" aria-hidden="true">
+                <svg viewBox="0 0 800 380" preserveAspectRatio="none">
+                  <rect width="800" height="380" fill="rgba(21,101,192,0.2)" />
+                  <path
+                    d="M420 70c24 0 44 20 44 44c0 30-18 54-18 84c0 16 10 30 10 48c0 28-16 54-36 70c-20-16-36-42-36-70c0-18 10-32 10-48c0-30-18-54-18-84c0-24 20-44 44-44Z"
+                    fill="rgba(46,125,50,0.22)"
+                  />
+                  <path d="M210 310c120-26 250-26 380 0" fill="none" stroke="#1565C0" stroke-opacity="0.5" stroke-width="10" />
+                </svg>
+              </div>
+              <div class="gallery-caption">
+                <strong>Microrganismos em ação</strong>
+                <span>Bactérias acelerando processos biológicos.</span>
+              </div>
+            </article>
+
+            <article class="gallery-item reveal" data-reveal>
+              <div class="gallery-media" aria-hidden="true">
+                <svg viewBox="0 0 800 380" preserveAspectRatio="none">
+                  <rect width="800" height="380" fill="rgba(46,125,50,0.18)" />
+                  <path d="M370 60h60l-10 60v160c0 26-18 44-40 44s-40-18-40-44V120l-10-60Z" fill="rgba(21,101,192,0.28)" />
+                  <path d="M320 140h160" stroke="#2E7D32" stroke-opacity="0.5" stroke-width="10" stroke-linecap="round" />
+                  <path d="M320 200h160" stroke="#1565C0" stroke-opacity="0.42" stroke-width="10" stroke-linecap="round" />
+                </svg>
+              </div>
+              <div class="gallery-caption">
+                <strong>Garrafa PET</strong>
+                <span>Poluição plástica como problema-alvo.</span>
+              </div>
+            </article>
+
+            <article class="gallery-item reveal" data-reveal>
+              <div class="gallery-media" aria-hidden="true">
+                <svg viewBox="0 0 800 380" preserveAspectRatio="none">
+                  <rect width="800" height="380" fill="rgba(21,101,192,0.18)" />
+                  <circle cx="240" cy="170" r="92" fill="rgba(46,125,50,0.26)" />
+                  <circle cx="560" cy="210" r="130" fill="rgba(21,101,192,0.24)" />
+                  <path d="M170 260c70-70 160-100 260-90c96 10 176 50 250 120" fill="none" stroke="#1565C0" stroke-opacity="0.48" stroke-width="10" />
+                </svg>
+              </div>
+              <div class="gallery-caption">
+                <strong>Meio ambiente</strong>
+                <span>Rios, mares e solos como foco de preservação.</span>
+              </div>
+            </article>
+
+            <article class="gallery-item reveal" data-reveal>
+              <div class="gallery-media" aria-hidden="true">
+                <svg viewBox="0 0 800 380" preserveAspectRatio="none">
+                  <rect width="800" height="380" fill="rgba(46,125,50,0.16)" />
+                  <path d="M220 300c60-120 120-160 180-160s120 40 180 160" fill="none" stroke="#2E7D32" stroke-opacity="0.46" stroke-width="12" stroke-linecap="round" />
+                  <path d="M300 230c40-50 80-70 120-70s80 20 120 70" fill="none" stroke="#1565C0" stroke-opacity="0.4" stroke-width="10" stroke-linecap="round" />
+                </svg>
+              </div>
+              <div class="gallery-caption">
+                <strong>Dados e metodologia</strong>
+                <span>Experimentos com registro e repetição.</span>
+              </div>
+            </article>
+
+            <article class="gallery-item reveal" data-reveal>
+              <div class="gallery-media" aria-hidden="true">
+                <svg viewBox="0 0 800 380" preserveAspectRatio="none">
+                  <rect width="800" height="380" fill="rgba(21,101,192,0.16)" />
+                  <path d="M180 260h440" stroke="#1565C0" stroke-opacity="0.42" stroke-width="12" stroke-linecap="round" />
+                  <path d="M230 260c0-50 40-90 90-90h140c50 0 90 40 90 90" fill="none" stroke="#2E7D32" stroke-opacity="0.44" stroke-width="12" stroke-linecap="round" />
+                  <circle cx="300" cy="170" r="10" fill="#2E7D32" opacity="0.6" />
+                  <circle cx="400" cy="150" r="10" fill="#1565C0" opacity="0.6" />
+                  <circle cx="500" cy="170" r="10" fill="#2E7D32" opacity="0.6" />
+                </svg>
+              </div>
+              <div class="gallery-caption">
+                <strong>Feira de ciências</strong>
+                <span>Comunicação clara e visual profissional.</span>
+              </div>
+            </article>
           </div>
         </div>
       </section>
 
-      <section class="section section-alt" id="contato" aria-labelledby="contato-title">
+      <section class="section alt" id="contato" aria-labelledby="contato-title">
         <div class="container">
-          <header class="section-header reveal">
-            <h2 class="section-title" id="contato-title">Contato Institucional</h2>
-            <p class="section-subtitle">Para parcerias acadêmicas, financiamento de pesquisa ou dúvidas técnicas.</p>
+          <header class="section-header reveal" data-reveal>
+            <h2 class="section-title" id="contato-title">Contato e Feira de Ciências</h2>
+            <p class="section-subtitle">Deixe aqui escola, orientação e formas de contato (Instagram, e-mail e página de artigos).</p>
           </header>
 
-          <div class="contact-grid">
-            <div class="contact-card reveal">
-              <div class="contact-icon">
-                <i class="fa-solid fa-envelope" aria-hidden="true"></i>
-              </div>
-              <div>
-                <p class="contact-label">Coordenação de Pesquisa</p>
-                <a class="contact-value" href="mailto:pesquisa@bioinova.edu.br">pesquisa@bioinova.edu.br</a>
-              </div>
+          <div class="contact">
+            <div class="contact-card reveal" data-reveal>
+              <strong>Escola / Turma</strong>
+              <p>Coloque aqui o nome da escola e a turma. Ex.: 2º Ano B – Ensino Médio.</p>
             </div>
-            <div class="contact-card reveal">
-              <div class="contact-icon">
-                <i class="fa-solid fa-building-columns" aria-hidden="true"></i>
-              </div>
-              <div>
-                <p class="contact-label">Instituição Parceira</p>
-                <p class="contact-value">Instituto de Bioengenharia</p>
-              </div>
+            <div class="contact-card reveal" data-reveal>
+              <strong>Orientação</strong>
+              <p>Professor(a) orientador(a): nome e área. Ex.: Biologia / Química.</p>
             </div>
-            <div class="contact-card reveal">
-              <div class="contact-icon">
-                <i class="fa-solid fa-flask-vial" aria-hidden="true"></i>
-              </div>
-              <div>
-                <p class="contact-label">Laboratório</p>
-                <p class="contact-value">Polo Tecnológico, Sala 402</p>
+            <div class="contact-card reveal" data-reveal>
+              <strong>Contato</strong>
+              <p>Coloque o Instagram do projeto e o e-mail para quem quiser saber mais.</p>
+              <div class="person-actions">
+                <a class="icon-link primary" href="https://instagram.com/" target="_blank" rel="noreferrer">
+                  <svg class="icon" aria-hidden="true"><use href="#i-instagram"></use></svg>
+                  Instagram do projeto
+                </a>
+                <a class="icon-link primary" href="artigos.html">
+                  <svg class="icon" aria-hidden="true"><use href="#i-arrow"></use></svg>
+                  Artigos & atualizações
+                </a>
+                <a class="icon-link primary" href="mailto:contato@exemplo.com">
+                  <svg class="icon" aria-hidden="true"><use href="#i-arrow"></use></svg>
+                  contato@exemplo.com
+                </a>
               </div>
             </div>
           </div>
@@ -460,33 +2143,325 @@
 
     <footer class="site-footer">
       <div class="container footer-inner">
-        <div class="footer-brand">
-          <span class="brand-mark" aria-hidden="true">
-            <i class="fa-solid fa-dna" style="color: #02080a; font-size: 1.2rem;"></i>
-          </span>
-          <div>
-            <p class="footer-team">Laboratório Projeto CSG</p>
-            <p class="footer-note">Pesquisa & Desenvolvimento em Sustentabilidade • <span id="year"></span></p>
-          </div>
-        </div>
-
-        <a class="back-to-top" href="#topo" aria-label="Voltar ao topo">
-          <i class="fa-solid fa-arrow-up" aria-hidden="true"></i>
+        <div class="footer-meta">Vitor Emanuel • <span id="year"></span></div>
+        <a class="to-top" href="#topo" aria-label="Voltar ao topo">
+          <svg class="icon" aria-hidden="true"><use href="#i-chevron-up"></use></svg>
         </a>
       </div>
     </footer>
 
-    <div class="modal" id="modal" aria-hidden="true" role="dialog" aria-label="Visualização de imagem">
-      <div class="modal-backdrop" data-close="true"></div>
-      <div class="modal-content" role="document">
-        <button class="modal-close" type="button" data-close="true" aria-label="Fechar">
-          <i class="fa-solid fa-xmark" aria-hidden="true"></i>
-        </button>
-        <div class="modal-media" id="modalMedia" aria-hidden="true"></div>
-        <p class="modal-caption" id="modalCaption"></p>
+    <div class="modal" id="personModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="personModalTitle">
+      <div class="modal-backdrop" data-modal-close></div>
+      <div class="modal-panel" role="document">
+        <div class="modal-header">
+          <h3 class="modal-title" id="personModalTitle">Participante</h3>
+          <button class="modal-close" type="button" data-modal-close aria-label="Fechar janela">
+            <svg class="icon" aria-hidden="true"><use href="#i-x"></use></svg>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="modal-grid">
+            <div class="modal-photo" aria-hidden="true">
+              <img id="personModalPhoto" alt="" />
+            </div>
+            <div class="modal-info">
+              <p style="font-weight: 900; letter-spacing: -0.02em; font-size: 1.3rem; margin: 0" id="personModalName"></p>
+              <p style="margin-top: 6px" id="personModalFront"></p>
+              <p style="margin-top: 10px" id="personModalRole"></p>
+              <p style="margin-top: 10px" id="personModalBio"></p>
+              <div class="modal-actions">
+                <a class="icon-link primary" id="personModalInstagram" href="#" target="_blank" rel="noreferrer">
+                  <svg class="icon" aria-hidden="true"><use href="#i-instagram"></use></svg>
+                  Instagram
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
-    <script src="./script.js"></script>
+    <script>
+      const yearEl = document.getElementById("year");
+      if (yearEl) yearEl.textContent = String(new Date().getFullYear());
+
+      const navToggle = document.querySelector(".nav-toggle");
+      const navList = document.getElementById("menu");
+      const navLinks = Array.from(document.querySelectorAll(".nav-link"));
+      const themeToggle = document.getElementById("themeToggle");
+      const viewToggle = document.getElementById("viewToggle");
+      const scrollProgressBar = document.getElementById("scrollProgressBar");
+      const heroEl = document.querySelector(".hero");
+
+      const updateScrollProgress = () => {
+        if (!scrollProgressBar) return;
+        const doc = document.documentElement;
+        const max = Math.max(0, doc.scrollHeight - window.innerHeight);
+        const ratio = max > 0 ? window.scrollY / max : 0;
+        scrollProgressBar.style.width = `${Math.max(0, Math.min(100, ratio * 100))}%`;
+      };
+
+      window.addEventListener("scroll", updateScrollProgress, { passive: true });
+      window.addEventListener("resize", updateScrollProgress);
+      updateScrollProgress();
+
+      const closeNav = () => {
+        document.body.classList.remove("nav-open");
+        if (navToggle) navToggle.setAttribute("aria-expanded", "false");
+      };
+
+      if (navToggle) {
+        navToggle.addEventListener("click", () => {
+          const isOpen = document.body.classList.toggle("nav-open");
+          navToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+        });
+      }
+
+      if (navList) {
+        navList.addEventListener("click", (event) => {
+          const target = event.target;
+          if (!(target instanceof HTMLElement)) return;
+          if (target.closest("a")) closeNav();
+        });
+      }
+
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") closeNav();
+      });
+
+      const htmlEl = document.documentElement;
+
+      const setTheme = (theme) => {
+        const normalized = theme === "dark" ? "dark" : "light";
+        htmlEl.setAttribute("data-theme", normalized);
+        try {
+          localStorage.setItem("theme", normalized);
+        } catch {}
+
+        if (themeToggle) {
+          const isDark = normalized === "dark";
+          themeToggle.setAttribute("aria-pressed", isDark ? "true" : "false");
+          themeToggle.setAttribute("aria-label", isDark ? "Ativar modo claro" : "Ativar modo escuro");
+          themeToggle.innerHTML = isDark
+            ? '<svg class="icon" aria-hidden="true"><use href="#i-sun"></use></svg>'
+            : '<svg class="icon" aria-hidden="true"><use href="#i-moon"></use></svg>';
+        }
+      };
+
+      const savedTheme = (() => {
+        try {
+          return localStorage.getItem("theme");
+        } catch {
+          return null;
+        }
+      })();
+      const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+      setTheme(savedTheme || (prefersDark ? "dark" : "light"));
+
+      if (themeToggle) {
+        themeToggle.addEventListener("click", () => {
+          const current = htmlEl.getAttribute("data-theme");
+          setTheme(current === "dark" ? "light" : "dark");
+        });
+      }
+
+      const setPreview = (mode) => {
+        const normalized = mode === "mobile" ? "mobile" : "desktop";
+        if (normalized === "mobile") htmlEl.setAttribute("data-preview", "mobile");
+        else htmlEl.removeAttribute("data-preview");
+
+        try {
+          localStorage.setItem("preview", normalized);
+        } catch {}
+
+        if (viewToggle) {
+          const isMobile = normalized === "mobile";
+          viewToggle.setAttribute("aria-pressed", isMobile ? "true" : "false");
+          viewToggle.setAttribute("aria-label", isMobile ? "Pré-visualizar como computador" : "Pré-visualizar como celular");
+          viewToggle.innerHTML = isMobile
+            ? '<svg class="icon" aria-hidden="true"><use href="#i-monitor"></use></svg>'
+            : '<svg class="icon" aria-hidden="true"><use href="#i-phone"></use></svg>';
+        }
+      };
+
+      const savedPreview = (() => {
+        try {
+          return localStorage.getItem("preview");
+        } catch {
+          return null;
+        }
+      })();
+      setPreview(savedPreview || "desktop");
+
+      if (viewToggle) {
+        viewToggle.addEventListener("click", () => {
+          const current = htmlEl.getAttribute("data-preview");
+          setPreview(current === "mobile" ? "desktop" : "mobile");
+        });
+      }
+
+      const modal = document.getElementById("personModal");
+      const modalPhoto = document.getElementById("personModalPhoto");
+      const modalName = document.getElementById("personModalName");
+      const modalFront = document.getElementById("personModalFront");
+      const modalRole = document.getElementById("personModalRole");
+      const modalBio = document.getElementById("personModalBio");
+      const modalInstagram = document.getElementById("personModalInstagram");
+      let lastFocusedEl = null;
+
+      const closeModal = () => {
+        if (!modal) return;
+        modal.classList.remove("open");
+        modal.setAttribute("aria-hidden", "true");
+        document.body.style.overflow = "";
+        if (lastFocusedEl instanceof HTMLElement) lastFocusedEl.focus();
+        lastFocusedEl = null;
+      };
+
+      const openModalFromCard = (card) => {
+        if (!modal) return;
+        lastFocusedEl = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+
+        const name = card.getAttribute("data-name") || "";
+        const front = card.getAttribute("data-front") || "";
+        const role = card.getAttribute("data-role") || "";
+        const bio = card.getAttribute("data-bio") || "";
+        const instagram = card.getAttribute("data-instagram") || "";
+        const photo = card.getAttribute("data-photo") || "";
+
+        if (modalName) modalName.textContent = name;
+        if (modalFront) modalFront.textContent = front ? `Frente: ${front}` : "";
+        if (modalRole) modalRole.textContent = role ? `Função: ${role}` : "";
+        if (modalBio) modalBio.textContent = bio;
+
+        if (modalInstagram) {
+          const hasInstagram = Boolean(instagram);
+          modalInstagram.href = hasInstagram ? instagram : "#";
+          modalInstagram.style.display = hasInstagram ? "inline-flex" : "none";
+        }
+
+        if (modalPhoto instanceof HTMLImageElement) {
+          modalPhoto.src = photo;
+          modalPhoto.alt = name ? `Foto de ${name}` : "Foto do participante";
+        }
+
+        modal.classList.add("open");
+        modal.setAttribute("aria-hidden", "false");
+        document.body.style.overflow = "hidden";
+
+        const closeBtn = modal.querySelector("button[data-modal-close]");
+        if (closeBtn instanceof HTMLElement) closeBtn.focus();
+      };
+
+      const peopleGrid = document.querySelector(".people-grid");
+      if (peopleGrid) {
+        peopleGrid.addEventListener("click", (event) => {
+          const target = event.target;
+          if (!(target instanceof HTMLElement)) return;
+          if (target.closest("a")) return;
+          const card = target.closest(".person-card");
+          if (!(card instanceof HTMLElement)) return;
+          openModalFromCard(card);
+        });
+      }
+
+      if (modal) {
+        modal.addEventListener("click", (event) => {
+          const target = event.target;
+          if (!(target instanceof HTMLElement)) return;
+          if (target.closest("[data-modal-close]")) closeModal();
+        });
+
+        document.addEventListener("keydown", (event) => {
+          if (event.key === "Escape" && modal.classList.contains("open")) closeModal();
+        });
+      }
+
+      const revealEls = Array.from(document.querySelectorAll("[data-reveal]"));
+      const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+      if (!prefersReducedMotion.matches && heroEl instanceof HTMLElement && window.matchMedia("(pointer: fine)").matches) {
+        heroEl.addEventListener("pointermove", (event) => {
+          const rect = heroEl.getBoundingClientRect();
+          const x = ((event.clientX - rect.left) / rect.width - 0.5) * 18;
+          const y = ((event.clientY - rect.top) / rect.height - 0.5) * 18;
+          heroEl.style.setProperty("--px", `${x.toFixed(2)}px`);
+          heroEl.style.setProperty("--py", `${y.toFixed(2)}px`);
+        });
+
+        heroEl.addEventListener("pointerleave", () => {
+          heroEl.style.setProperty("--px", "0px");
+          heroEl.style.setProperty("--py", "0px");
+        });
+      }
+
+      if (prefersReducedMotion.matches) {
+        revealEls.forEach((el) => el.classList.add("in"));
+      } else {
+        const io = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("in");
+                io.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.12 }
+        );
+
+        revealEls.forEach((el) => io.observe(el));
+      }
+
+      const progressCards = Array.from(document.querySelectorAll("[data-progress]"));
+      const setProgress = (rootEl) => {
+        const value = Number(rootEl.getAttribute("data-progress"));
+        const bar = rootEl.querySelector(".progress > div");
+        if (!bar) return;
+        bar.style.width = Number.isFinite(value) ? `${Math.max(0, Math.min(100, value))}%` : "0%";
+      };
+
+      if (prefersReducedMotion.matches) {
+        progressCards.forEach(setProgress);
+      } else {
+        const progressObserver = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                setProgress(entry.target);
+                progressObserver.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.35 }
+        );
+
+        progressCards.forEach((el) => progressObserver.observe(el));
+      }
+
+      const sectionIds = ["projetos", "impacto", "etapas", "equipe", "participantes", "galeria", "contato"];
+      const sections = sectionIds
+        .map((id) => document.getElementById(id))
+        .filter((el) => el instanceof HTMLElement);
+
+      const updateActiveNav = () => {
+        const scrollY = window.scrollY + 120;
+        let currentId = "";
+        for (const section of sections) {
+          if (section.offsetTop <= scrollY) currentId = section.id;
+        }
+
+        navLinks.forEach((link) => {
+          const href = link.getAttribute("href") || "";
+          const id = href.startsWith("#") ? href.slice(1) : "";
+          if (id && id === currentId) link.setAttribute("aria-current", "page");
+          else link.removeAttribute("aria-current");
+        });
+      };
+
+      window.addEventListener("scroll", updateActiveNav, { passive: true });
+      window.addEventListener("resize", updateActiveNav);
+      updateActiveNav();
+    </script>
   </body>
 </html>
