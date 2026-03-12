@@ -1,0 +1,492 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="dark light" />
+    <meta name="description" content="Site de apresentação de pesquisas em Biotecnologia e Sustentabilidade." />
+
+    <title>BioInovação | Pesquisa em Sustentabilidade</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#inicio">Pular para o conteúdo</a>
+
+    <header class="site-header" id="topo">
+      <div class="container header-inner">
+        <a class="brand" href="#inicio" aria-label="Ir para Início">
+          <span class="brand-mark" aria-hidden="true">
+            <i class="fa-solid fa-dna"></i>
+          </span>
+          <span class="brand-name">Projeto CSG</span>
+          <span class="brand-tag">Bio Lab</span>
+        </a>
+
+        <div class="header-actions">
+          <button class="theme-toggle" type="button" aria-label="Alternar tema" aria-pressed="false">
+            <i class="fa-solid fa-moon" aria-hidden="true"></i>
+          </button>
+
+          <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="menu">
+            <span class="sr-only">Abrir menu</span>
+            <i class="fa-solid fa-bars" aria-hidden="true"></i>
+          </button>
+        </div>
+
+        <nav class="site-nav" aria-label="Navegação principal">
+          <ul class="nav-list" id="menu">
+            <li><a class="nav-link" href="#inicio">Início</a></li>
+            <li><a class="nav-link" href="#sobre">Projetos</a></li>
+            <li><a class="nav-link" href="#equipe">Equipe</a></li>
+            <li><a class="nav-link" href="#alunos">Pesquisadores</a></li>
+            <li><a class="nav-link" href="#linha-do-tempo">Cronograma</a></li>
+            <li><a class="nav-link" href="#galeria">Galeria</a></li>
+            <li><a class="nav-link" href="#contato">Contato</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero" id="inicio" aria-labelledby="hero-title">
+        <div class="hero-bg-grid"></div>
+        <div class="container hero-inner">
+          <div class="hero-content reveal">
+            <p class="kicker">
+              <i class="fa-solid fa-microscope" aria-hidden="true"></i>
+              Biotecnologia Aplicada
+            </p>
+
+            <h1 class="hero-title" id="hero-title">
+              Engenharia <span class="accent">Biológica</span> para <br/>
+              um <span class="accent2">Ecossistema</span> Sustentável.
+            </h1>
+
+            <p class="hero-subtitle">
+              Pesquisas científicas de ponta desenvolvidas por jovens pesquisadores. Exploramos soluções microbiológicas para os desafios mais urgentes do nosso planeta.
+            </p>
+
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="#sobre">
+                Explorar Pesquisas
+                <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+              </a>
+              <a class="btn btn-ghost" href="#linha-do-tempo">
+                Método Científico
+                <i class="fa-solid fa-flask" aria-hidden="true"></i>
+              </a>
+            </div>
+
+            <div class="hero-metrics">
+              <div class="metric-card">
+                <p class="metric-value">02</p>
+                <p class="metric-label">Linhas de Pesquisa</p>
+              </div>
+              <div class="metric-card">
+                <p class="metric-value">11</p>
+                <p class="metric-label">Jovens Cientistas</p>
+              </div>
+              <div class="metric-card">
+                <p class="metric-value">2026</p>
+                <p class="metric-label">Ciclo Atual</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-visual reveal" aria-hidden="true">
+            <div class="dashboard-panel">
+              <div class="dash-bg-glow"></div>
+              
+              <div class="dash-card dash-card-1">
+                <div class="dash-icon"><i class="fa-solid fa-leaf"></i></div>
+                <div class="dash-info">
+                  <h4>Biofertilizante</h4>
+                  <p>Eficiência Sintrófica</p>
+                  <div class="progress-bar"><div class="progress p-green" style="width: 88%"></div></div>
+                </div>
+                <div class="dash-stats">88%</div>
+              </div>
+
+              <div class="dash-card dash-card-2">
+                <div class="dash-icon"><i class="fa-solid fa-microbe"></i></div>
+                <div class="dash-info">
+                  <h4>Degradação PET</h4>
+                  <p>Taxa Enzimática</p>
+                  <div class="progress-bar"><div class="progress p-blue" style="width: 94%"></div></div>
+                </div>
+                <div class="dash-stats">94 U/mg</div>
+              </div>
+
+              <div class="dash-card dash-card-3">
+                 <div class="dna-animation">
+                    <div class="strand"></div><div class="strand"></div><div class="strand"></div><div class="strand"></div><div class="strand"></div>
+                 </div>
+                 <p class="dash-note">Análise Genômica em Tempo Real</p>
+              </div>
+            </div>
+            
+            <div class="bio-particle p1"></div>
+            <div class="bio-particle p2"></div>
+            <div class="bio-particle p3"></div>
+            <div class="bio-particle p4"></div>
+            <div class="bio-particle p5"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="sobre" aria-labelledby="sobre-title">
+        <div class="container">
+          <header class="section-header reveal">
+            <h2 class="section-title" id="sobre-title">Linhas de Pesquisa</h2>
+            <p class="section-subtitle">
+              Nossos estudos concentram-se no uso avançado de microrganismos para promover a regeneração ambiental.
+            </p>
+          </header>
+
+          <div class="about-grid projects-grid">
+            <article class="card reveal card-hover-3d">
+              <div class="card-glow"></div>
+              <div class="card-icon">
+                <i class="fa-solid fa-leaf" aria-hidden="true"></i>
+              </div>
+              <h3 class="card-title">Biofertilizante Sintrófico</h3>
+              <p class="card-text">
+                <strong>Composição:</strong> Consórcio bacteriano especializado e reaproveitamento de biomassa (resíduos orgânicos urbanos e calcário biológico).
+              </p>
+              <div class="card-divider"></div>
+              <p class="card-text">
+                <strong>Objetivo:</strong> Formular um insumo agrícola de alto rendimento que promova a fixação biológica de nitrogênio e a solubilização de fósforo no solo.
+              </p>
+              <div class="card-divider"></div>
+              <p class="card-text">
+                <strong>Impacto:</strong> Substituição em larga escala de fertilizantes sintéticos, reduzindo a eutrofização de rios e reaproveitando toneladas de resíduos sólidos.
+              </p>
+            </article>
+
+            <article class="card reveal card-hover-3d">
+              <div class="card-glow"></div>
+              <div class="card-icon">
+                <i class="fa-solid fa-microbe" aria-hidden="true"></i>
+              </div>
+              <h3 class="card-title">Degradação Enzimática de PET</h3>
+              <p class="card-text">
+                <strong>Mecanismo:</strong> Engenharia e otimização metabólica de cepas bacterianas produtoras de enzimas super-ativas (PETases e MHETases).
+              </p>
+              <div class="card-divider"></div>
+              <p class="card-text">
+                <strong>Objetivo:</strong> Acelerar a hidrólise de polímeros PET, convertendo plásticos complexos em monômeros benignos em condições otimizadas de laboratório.
+              </p>
+              <div class="card-divider"></div>
+              <p class="card-text">
+                <strong>Impacto:</strong> Uma solução biológica viável para o acúmulo de plásticos nos oceanos, criando um ciclo fechado para a indústria de embalagens.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-alt" id="equipe" aria-labelledby="equipe-title">
+        <div class="container">
+          <header class="section-header reveal">
+            <h2 class="section-title" id="equipe-title">Investigadores Principais</h2>
+            <p class="section-subtitle">
+              Líderes das frentes de pesquisa em bioinformática, genética e microbiologia.
+            </p>
+          </header>
+
+          <div class="grid grid-3">
+            <article class="profile-card reveal">
+              <div class="profile-avatar-wrap">
+                <img class="avatar" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='256' height='256'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop stop-color='%2310b981'/%3E%3Cstop offset='1' stop-color='%230ea5e9'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='256' height='256' rx='56' fill='url(%23g)'/%3E%3Ctext x='50%25' y='56%25' text-anchor='middle' font-family='Outfit, sans-serif' font-size='84' font-weight='700' fill='%2302080a'%3EAJ%3C/text%3E%3C/svg%3E" alt="Ana Julia" />
+                <div class="status-dot"></div>
+              </div>
+              <h3 class="profile-name">Ana Julia</h3>
+              <p class="profile-role"><i class="fa-solid fa-laptop-medical"></i> Bioinformática</p>
+              <p class="profile-desc">Análise de sequenciamento genômico e modelagem computacional de enzimas.</p>
+              <div class="profile-actions" aria-label="Redes sociais">
+                <a class="icon-btn" href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                <a class="icon-btn" href="#" aria-label="Lattes"><i class="fa-solid fa-graduation-cap"></i></a>
+              </div>
+            </article>
+
+            <article class="profile-card reveal">
+              <div class="profile-avatar-wrap">
+                <img class="avatar" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='256' height='256'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop stop-color='%2310b981'/%3E%3Cstop offset='1' stop-color='%230ea5e9'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='256' height='256' rx='56' fill='url(%23g)'/%3E%3Ctext x='50%25' y='56%25' text-anchor='middle' font-family='Outfit, sans-serif' font-size='84' font-weight='700' fill='%2302080a'%3EBR%3C/text%3E%3C/svg%3E" alt="Bruno Rocha" />
+                <div class="status-dot"></div>
+              </div>
+              <h3 class="profile-name">Bruno Rocha</h3>
+              <p class="profile-role"><i class="fa-solid fa-dna"></i> Engenharia Genética</p>
+              <p class="profile-desc">Edição de plasmídeos e otimização de vias metabólicas bacterianas.</p>
+              <div class="profile-actions" aria-label="Redes sociais">
+                <a class="icon-btn" href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                <a class="icon-btn" href="#" aria-label="Lattes"><i class="fa-solid fa-graduation-cap"></i></a>
+              </div>
+            </article>
+
+            <article class="profile-card reveal">
+              <div class="profile-avatar-wrap">
+                <img class="avatar" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='256' height='256'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop stop-color='%2310b981'/%3E%3Cstop offset='1' stop-color='%230ea5e9'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='256' height='256' rx='56' fill='url(%23g)'/%3E%3Ctext x='50%25' y='56%25' text-anchor='middle' font-family='Outfit, sans-serif' font-size='84' font-weight='700' fill='%2302080a'%3ECS%3C/text%3E%3C/svg%3E" alt="Carla Santos" />
+                <div class="status-dot"></div>
+              </div>
+              <h3 class="profile-name">Carla Santos</h3>
+              <p class="profile-role"><i class="fa-solid fa-viruses"></i> Microbiologia</p>
+              <p class="profile-desc">Cultivo celular in vitro, isolamento de cepas e ensaios de toxicidade.</p>
+              <div class="profile-actions" aria-label="Redes sociais">
+                <a class="icon-btn" href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                <a class="icon-btn" href="#" aria-label="Lattes"><i class="fa-solid fa-graduation-cap"></i></a>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="alunos" aria-labelledby="alunos-title">
+        <div class="container">
+          <header class="section-header reveal">
+            <h2 class="section-title" id="alunos-title">Pesquisadores Juniores</h2>
+            <p class="section-subtitle">Apoio técnico vital nas etapas de experimentação em laboratório e pesquisa de campo.</p>
+          </header>
+
+          <div class="grid grid-4">
+            <article class="student-card reveal">
+              <img class="avatar avatar-sm" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='128' height='128'%3E%3Crect width='128' height='128' fill='%230f172a'/%3E%3Ctext x='50%25' y='56%25' text-anchor='middle' font-family='Outfit, sans-serif' font-size='48' font-weight='600' fill='%2310b981'%3ELM%3C/text%3E%3C/svg%3E" alt="Lucas Martins" />
+              <h3 class="student-name">Lucas Martins</h3>
+              <p class="student-desc">Pesquisa de campo e amostragem de solo.</p>
+            </article>
+            <article class="student-card reveal">
+              <img class="avatar avatar-sm" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='128' height='128'%3E%3Crect width='128' height='128' fill='%230f172a'/%3E%3Ctext x='50%25' y='56%25' text-anchor='middle' font-family='Outfit, sans-serif' font-size='48' font-weight='600' fill='%2310b981'%3EPF%3C/text%3E%3C/svg%3E" alt="Paula Ferreira" />
+              <h3 class="student-name">Paula Ferreira</h3>
+              <p class="student-desc">Controle de variáveis em biorreatores.</p>
+            </article>
+            <article class="student-card reveal">
+              <img class="avatar avatar-sm" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='128' height='128'%3E%3Crect width='128' height='128' fill='%230f172a'/%3E%3Ctext x='50%25' y='56%25' text-anchor='middle' font-family='Outfit, sans-serif' font-size='48' font-weight='600' fill='%2310b981'%3ERG%3C/text%3E%3C/svg%3E" alt="Rafael Gomes" />
+              <h3 class="student-name">Rafael Gomes</h3>
+              <p class="student-desc">Registro rigoroso de protocolos experimentais.</p>
+            </article>
+            <article class="student-card reveal">
+              <img class="avatar avatar-sm" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='128' height='128'%3E%3Crect width='128' height='128' fill='%230f172a'/%3E%3Ctext x='50%25' y='56%25' text-anchor='middle' font-family='Outfit, sans-serif' font-size='48' font-weight='600' fill='%2310b981'%3EMS%3C/text%3E%3C/svg%3E" alt="Mariana Silva" />
+              <h3 class="student-name">Mariana Silva</h3>
+              <p class="student-desc">Análise bibliográfica e revisão de literatura.</p>
+            </article>
+            <article class="student-card reveal">
+              <img class="avatar avatar-sm" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='128' height='128'%3E%3Crect width='128' height='128' fill='%230f172a'/%3E%3Ctext x='50%25' y='56%25' text-anchor='middle' font-family='Outfit, sans-serif' font-size='48' font-weight='600' fill='%2310b981'%3EJP%3C/text%3E%3C/svg%3E" alt="João Pedro" />
+              <h3 class="student-name">João Pedro</h3>
+              <p class="student-desc">Modelagem de bio-processos industriais.</p>
+            </article>
+            <article class="student-card reveal">
+              <img class="avatar avatar-sm" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='128' height='128'%3E%3Crect width='128' height='128' fill='%230f172a'/%3E%3Ctext x='50%25' y='56%25' text-anchor='middle' font-family='Outfit, sans-serif' font-size='48' font-weight='600' fill='%2310b981'%3EIS%3C/text%3E%3C/svg%3E" alt="Isabela Souza" />
+              <h3 class="student-name">Isabela Souza</h3>
+              <p class="student-desc">Comunicação e divulgação científica.</p>
+            </article>
+            <article class="student-card reveal">
+              <img class="avatar avatar-sm" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='128' height='128'%3E%3Crect width='128' height='128' fill='%230f172a'/%3E%3Ctext x='50%25' y='56%25' text-anchor='middle' font-family='Outfit, sans-serif' font-size='48' font-weight='600' fill='%2310b981'%3EGF%3C/text%3E%3C/svg%3E" alt="Gabriel Freitas" />
+              <h3 class="student-name">Gabriel Freitas</h3>
+              <p class="student-desc">Bioestatística e validação de dados quantitativos.</p>
+            </article>
+            <article class="student-card reveal">
+              <img class="avatar avatar-sm" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='128' height='128'%3E%3Crect width='128' height='128' fill='%230f172a'/%3E%3Ctext x='50%25' y='56%25' text-anchor='middle' font-family='Outfit, sans-serif' font-size='48' font-weight='600' fill='%2310b981'%3ETV%3C/text%3E%3C/svg%3E" alt="Tainá Vieira" />
+              <h3 class="student-name">Tainá Vieira</h3>
+              <p class="student-desc">Preparo de soluções e gestão de reagentes.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-alt" id="linha-do-tempo" aria-labelledby="timeline-title">
+        <div class="container">
+          <header class="section-header reveal text-center" style="margin: 0 auto 40px;">
+            <h2 class="section-title" id="timeline-title">Evolução Metodológica</h2>
+            <p class="section-subtitle">
+              O pipeline da nossa pesquisa, seguindo rigorosos protocolos do método científico.
+            </p>
+          </header>
+
+          <div class="timeline-wrapper">
+            <ol class="timeline" aria-label="Cronograma de pesquisa">
+            <li class="timeline-item reveal">
+              <div class="timeline-node" aria-hidden="true"></div>
+              <div class="timeline-content">
+                <h3 class="timeline-title">
+                  <i class="fa-solid fa-book-journal-whills" aria-hidden="true"></i>
+                  Fundamentação Teórica
+                </h3>
+                <p class="timeline-text">Revisão sistemática da literatura sobre vias metabólicas de degradação e ecossistemas microbianos sintróficos.</p>
+                <span class="timeline-tag">Fase 1: Preparação</span>
+              </div>
+            </li>
+            <li class="timeline-item reveal">
+              <div class="timeline-node" aria-hidden="true"></div>
+              <div class="timeline-content">
+                <h3 class="timeline-title">
+                  <i class="fa-solid fa-vial-virus" aria-hidden="true"></i>
+                  Isolamento in Vitro
+                </h3>
+                <p class="timeline-text">Coleta em ambientes contaminados, plaqueamento diferencial e obtenção de culturas axênicas das cepas promissoras.</p>
+                <span class="timeline-tag">Fase 2: Laboratório</span>
+              </div>
+            </li>
+            <li class="timeline-item reveal">
+              <div class="timeline-node" aria-hidden="true"></div>
+              <div class="timeline-content">
+                <h3 class="timeline-title">
+                  <i class="fa-solid fa-temperature-half" aria-hidden="true"></i>
+                  Ensaios Cinéticos
+                </h3>
+                <p class="timeline-text">Medição da taxa de despolimerização do PET sob controle de pH/temperatura e eficácia do biofertilizante em modelos vegetais.</p>
+                <span class="timeline-tag">Fase 3: Experimentação</span>
+              </div>
+            </li>
+            <li class="timeline-item reveal">
+              <div class="timeline-node" aria-hidden="true"></div>
+              <div class="timeline-content">
+                <h3 class="timeline-title">
+                  <i class="fa-solid fa-chart-line" aria-hidden="true"></i>
+                  Análise Cromatográfica
+                </h3>
+                <p class="timeline-text">Quantificação dos monômeros gerados via HPLC e tratamento estatístico dos biomarcadores de crescimento vegetal.</p>
+                <span class="timeline-tag">Fase 4: Dados</span>
+              </div>
+            </li>
+            <li class="timeline-item reveal">
+              <div class="timeline-node" aria-hidden="true"></div>
+              <div class="timeline-content">
+                <h3 class="timeline-title">
+                  <i class="fa-solid fa-microscope" aria-hidden="true"></i>
+                  Publicação Científica
+                </h3>
+                <p class="timeline-text">Elaboração de artigos acadêmicos, registro de patentes provisórias e divulgação em congressos de biotecnologia.</p>
+                <span class="timeline-tag">Fase 5: Conclusão</span>
+              </div>
+            </li>
+          </ol>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="galeria" aria-labelledby="galeria-title">
+        <div class="container">
+          <header class="section-header reveal">
+            <h2 class="section-title" id="galeria-title">Evidências e Ensaios</h2>
+            <p class="section-subtitle">Registros visuais do progresso em laboratório e das metodologias aplicadas.</p>
+          </header>
+
+          <div class="gallery-grid" aria-label="Galeria de imagens">
+            <button class="gallery-item reveal" type="button" data-full="1" aria-label="Culturas em Placa">
+              <span class="gallery-thumb g1" aria-hidden="true"></span>
+              <span class="gallery-caption">
+                <i class="fa-solid fa-bacterium" aria-hidden="true"></i>
+                Isolamento de Cepas
+              </span>
+            </button>
+            <button class="gallery-item reveal" type="button" data-full="2" aria-label="Microscopia">
+              <span class="gallery-thumb g2" aria-hidden="true"></span>
+              <span class="gallery-caption">
+                <i class="fa-solid fa-microscope" aria-hidden="true"></i>
+                Microscopia Óptica
+              </span>
+            </button>
+            <button class="gallery-item reveal" type="button" data-full="3" aria-label="Análise de Solo">
+              <span class="gallery-thumb g3" aria-hidden="true"></span>
+              <span class="gallery-caption">
+                <i class="fa-solid fa-seedling" aria-hidden="true"></i>
+                Teste in Vivo
+              </span>
+            </button>
+            <button class="gallery-item reveal" type="button" data-full="4" aria-label="Biorreator">
+              <span class="gallery-thumb g4" aria-hidden="true"></span>
+              <span class="gallery-caption">
+                <i class="fa-solid fa-flask" aria-hidden="true"></i>
+                Biorreator Piloto
+              </span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-alt" id="contato" aria-labelledby="contato-title">
+        <div class="container">
+          <header class="section-header reveal">
+            <h2 class="section-title" id="contato-title">Contato Institucional</h2>
+            <p class="section-subtitle">Para parcerias acadêmicas, financiamento de pesquisa ou dúvidas técnicas.</p>
+          </header>
+
+          <div class="contact-grid">
+            <div class="contact-card reveal">
+              <div class="contact-icon">
+                <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+              </div>
+              <div>
+                <p class="contact-label">Coordenação de Pesquisa</p>
+                <a class="contact-value" href="mailto:pesquisa@bioinova.edu.br">pesquisa@bioinova.edu.br</a>
+              </div>
+            </div>
+            <div class="contact-card reveal">
+              <div class="contact-icon">
+                <i class="fa-solid fa-building-columns" aria-hidden="true"></i>
+              </div>
+              <div>
+                <p class="contact-label">Instituição Parceira</p>
+                <p class="contact-value">Instituto de Bioengenharia</p>
+              </div>
+            </div>
+            <div class="contact-card reveal">
+              <div class="contact-icon">
+                <i class="fa-solid fa-flask-vial" aria-hidden="true"></i>
+              </div>
+              <div>
+                <p class="contact-label">Laboratório</p>
+                <p class="contact-value">Polo Tecnológico, Sala 402</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <div class="footer-brand">
+          <span class="brand-mark" aria-hidden="true">
+            <i class="fa-solid fa-dna" style="color: #02080a; font-size: 1.2rem;"></i>
+          </span>
+          <div>
+            <p class="footer-team">Laboratório Projeto CSG</p>
+            <p class="footer-note">Pesquisa & Desenvolvimento em Sustentabilidade • <span id="year"></span></p>
+          </div>
+        </div>
+
+        <a class="back-to-top" href="#topo" aria-label="Voltar ao topo">
+          <i class="fa-solid fa-arrow-up" aria-hidden="true"></i>
+        </a>
+      </div>
+    </footer>
+
+    <div class="modal" id="modal" aria-hidden="true" role="dialog" aria-label="Visualização de imagem">
+      <div class="modal-backdrop" data-close="true"></div>
+      <div class="modal-content" role="document">
+        <button class="modal-close" type="button" data-close="true" aria-label="Fechar">
+          <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+        </button>
+        <div class="modal-media" id="modalMedia" aria-hidden="true"></div>
+        <p class="modal-caption" id="modalCaption"></p>
+      </div>
+    </div>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
